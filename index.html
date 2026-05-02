@@ -1,10 +1,196 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Welcome to My GitHub Pages</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tyler Dobson | Analytics Portfolio</title>
+  <meta name="description" content="Tyler Dobson's analytics portfolio featuring SQL, Python, Tableau, Power BI, Excel, data cleaning, dashboards, and business intelligence projects." />
+  <meta name="author" content="Tyler Dobson" />
+  <meta property="og:title" content="Tyler Dobson | Analytics Portfolio" />
+  <meta property="og:description" content="Business analytics portfolio featuring SQL, Python, Tableau, Power BI, Excel, and dashboard projects." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tylerdobson.github.io/" />
+  <link rel="canonical" href="https://tylerdobson.github.io/" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is my personal website created with GitHub Pages.</p>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Tyler Dobson portfolio home">
+        <span class="brand-mark">TD</span>
+        <span>Tyler Dobson</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-content">
+        <p class="eyebrow">Business Analytics • AI • Data Analysis</p>
+        <h1>Turning raw data into clean analysis, dashboards, and business-ready insight.</h1>
+        <p class="hero-copy">
+          I’m Tyler Dobson, a Business Analytics and AI student at the University of South Florida focused on SQL, Python, Tableau, Power BI, Excel, data cleaning, dashboarding, and business intelligence.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">View Projects</a>
+          <a class="button button-secondary" href="https://github.com/tylerdobson" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/tylerdobson" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Portfolio summary">
+        <img src="https://avatars.githubusercontent.com/u/279658866?v=4" alt="Tyler Dobson GitHub profile avatar" />
+        <h2>Tyler Dobson</h2>
+        <p>Aspiring Data Analyst</p>
+        <div class="summary-grid">
+          <div><strong>SQL</strong><span>Analysis</span></div>
+          <div><strong>Python</strong><span>Cleaning</span></div>
+          <div><strong>Tableau</strong><span>Dashboards</span></div>
+          <div><strong>BI</strong><span>Storytelling</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section about-section">
+      <div class="section-heading">
+        <p class="eyebrow">About</p>
+        <h2>A practical analytics portfolio.</h2>
+      </div>
+      <div class="two-column">
+        <p>
+          My work focuses on the parts of analytics that show up in real business settings: preparing messy data, structuring information for analysis, writing clear SQL, creating dashboards, and explaining findings in a way that supports decisions.
+        </p>
+        <p>
+          This portfolio highlights projects across data cleaning, SQL reporting, dashboard design, forecasting, market intelligence, and documentation. Each project is built to be readable on GitHub and explainable in interviews.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-heading">
+        <p class="eyebrow">Featured Work</p>
+        <h2>Projects</h2>
+        <p>Portfolio projects built around business problems, clean structure, and reviewable GitHub repositories.</p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card featured-card">
+          <div class="project-meta"><span>Python • Pandas • SQLite</span><span>Data Cleaning</span></div>
+          <h3>Sales Data Cleaning and Standardization</h3>
+          <p>A Python pipeline that converts messy retail sales exports into clean, validated, analysis-ready datasets while separating rejected records and publishing outputs to CSV and SQLite.</p>
+          <ul>
+            <li>Standardizes columns, dates, names, states, categories, and return flags.</li>
+            <li>Handles invalid records, duplicates, and data quality reporting.</li>
+            <li>Shows practical preparation work before analysis or dashboarding.</li>
+          </ul>
+          <a href="https://github.com/tylerdobson/sales-data-cleaning-standardization" target="_blank" rel="noreferrer">View repository</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta"><span>SQL • SQLite</span><span>Revenue Analysis</span></div>
+          <h3>SQL Retail Revenue Analysis</h3>
+          <p>A relational SQL project analyzing revenue by region, top customers, product performance, customer segments, and monthly sales trends.</p>
+          <ul>
+            <li>Uses customers, products, orders, and order items tables.</li>
+            <li>Demonstrates joins, aggregations, ranking, and trend analysis.</li>
+            <li>Packages SQL scripts, outputs, and documentation for review.</li>
+          </ul>
+          <a href="https://github.com/tylerdobson/sql-retail-revenue-analysis" target="_blank" rel="noreferrer">View repository</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta"><span>Tableau</span><span>Forecasting</span></div>
+          <h3>Tableau Forecasting and Discount Analysis</h3>
+          <p>An executive-style Tableau dashboard analyzing sales performance, discount behavior, profitability, and forecast trends.</p>
+          <ul>
+            <li>Connects KPI reporting with visual business storytelling.</li>
+            <li>Evaluates how discounting affects profitability.</li>
+            <li>Includes dashboard screenshots and supporting documentation.</li>
+          </ul>
+          <a href="https://github.com/tylerdobson/tableau-forecasting-discount-analysis" target="_blank" rel="noreferrer">View repository</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta"><span>Python • Streamlit • SQL</span><span>Market Intelligence</span></div>
+          <h3>Airbnb Market Intelligence Dashboard</h3>
+          <p>An end-to-end short-term rental analytics project using Python, SQL, SQLite, Plotly, and Streamlit.</p>
+          <ul>
+            <li>Analyzes pricing, occupancy, neighborhood demand, and estimated revenue.</li>
+            <li>Includes database, SQL analysis, dashboard app, and documentation.</li>
+            <li>Shows product-style analytics project organization.</li>
+          </ul>
+          <a href="https://github.com/tylerdobson/airbnb-market-intelligence-dashboard" target="_blank" rel="noreferrer">View repository</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta"><span>SQL • Modeling</span><span>Labor Market</span></div>
+          <h3>SQL Labor Market Intelligence</h3>
+          <p>A warehouse-style SQL project focused on labor market and affordability reporting using dimensions, facts, reusable views, and quality checks.</p>
+          <ul>
+            <li>Demonstrates schema design, analytical SQL, and validation checks.</li>
+            <li>Combines labor-market and affordability-style analysis.</li>
+            <li>Structured for GitHub, resume, and interview use.</li>
+          </ul>
+          <a href="https://github.com/tylerdobson/sql-labor-market-intelligence" target="_blank" rel="noreferrer">View repository</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section skills-section" id="skills">
+      <div class="section-heading">
+        <p class="eyebrow">Technical Stack</p>
+        <h2>Skills and tools</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group"><h3>Analysis</h3><p>SQL, SQLite, Excel, revenue analysis, trend analysis, business analytics</p></div>
+        <div class="skill-group"><h3>Programming</h3><p>Python, Pandas, data cleaning, validation logic, automation, CSV workflows</p></div>
+        <div class="skill-group"><h3>Visualization</h3><p>Tableau, Power BI, Streamlit, Plotly, KPI reporting, dashboard design</p></div>
+        <div class="skill-group"><h3>Professional Workflow</h3><p>GitHub, documentation, data modeling, case studies, stakeholder communication</p></div>
+      </div>
+    </section>
+
+    <section class="section approach-section" id="approach">
+      <div class="section-heading">
+        <p class="eyebrow">Approach</p>
+        <h2>How I structure analytics work</h2>
+      </div>
+      <div class="process-grid">
+        <div><span>01</span><h3>Define the question</h3><p>Start with the business decision, metric, or operational problem the analysis should support.</p></div>
+        <div><span>02</span><h3>Prepare the data</h3><p>Clean raw files, standardize values, validate records, and document quality issues.</p></div>
+        <div><span>03</span><h3>Analyze the results</h3><p>Use SQL, Python, and reporting logic to find patterns, rankings, trends, and exceptions.</p></div>
+        <div><span>04</span><h3>Communicate clearly</h3><p>Package the output into dashboards, summaries, documentation, and GitHub-ready case studies.</p></div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Open to analytics internships and project opportunities.</h2>
+        <p>I’m focused on building stronger analytics projects and presenting them clearly for GitHub, LinkedIn, and internship applications.</p>
+      </div>
+      <div class="contact-links">
+        <a href="https://github.com/tylerdobson" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/tylerdobson" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="mailto:tydobson41@gmail.com">Email</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2026</span> Tyler Dobson. Built with GitHub Pages.</p>
+    <a href="#top">Back to top</a>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
