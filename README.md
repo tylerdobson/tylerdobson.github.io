@@ -1,4 +1,4 @@
-# Tyler Dobson | Analytics Portfolio
+# Tyler Dobson | Business Analytics & AI Portfolio
 
 This repository powers my personal GitHub Pages portfolio website:
 
@@ -6,7 +6,9 @@ This repository powers my personal GitHub Pages portfolio website:
 
 ## Overview
 
-This portfolio presents my analytics work across SQL, Python, Tableau, Power BI, Excel, data cleaning, dashboarding, and business intelligence. It is designed to serve as a professional hub for GitHub, LinkedIn, internship applications, and recruiter review.
+This portfolio presents my analytics work as a **Business Analytics & AI Student at the University of South Florida**. It highlights projects across SQL, Python, Tableau, Power BI, Excel, data cleaning, dashboarding, and business intelligence.
+
+The site is designed as a professional hub for GitHub, LinkedIn, internship applications, and recruiter review.
 
 ## Featured Projects
 
