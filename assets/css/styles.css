@@ -1,19 +1,20 @@
 :root {
   --ink: #101418;
   --ink-soft: #2c333a;
-  --muted: #66717d;
-  --paper: #f7f8fa;
+  --muted: #65717d;
+  --paper: #f6f7f9;
   --surface: #ffffff;
-  --surface-alt: #eef3f1;
+  --surface-alt: #edf3f0;
   --line: #dce2e8;
-  --line-strong: #c7d0d9;
+  --line-strong: #c5d0da;
   --accent: #0f766e;
-  --accent-dark: #0b4f4a;
+  --accent-dark: #0a4f49;
   --blue: #1d4ed8;
   --gold: #b7791f;
+  --spotify: #1db954;
   --shadow: 0 18px 45px rgba(16, 20, 24, 0.08);
   --radius: 8px;
-  --max-width: 1120px;
+  --max-width: 1160px;
 }
 
 * {
@@ -76,7 +77,7 @@ img {
   top: 0;
   z-index: 100;
   border-bottom: 1px solid var(--line);
-  background: rgba(247, 248, 250, 0.92);
+  background: rgba(246, 247, 249, 0.94);
   backdrop-filter: blur(14px);
 }
 
@@ -132,9 +133,9 @@ img {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
   color: var(--muted);
-  font-size: 0.93rem;
+  font-size: 0.91rem;
   font-weight: 650;
 }
 
@@ -176,7 +177,7 @@ img {
 .hero {
   min-height: calc(100vh - 72px);
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+  grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
   align-items: center;
   gap: 3rem;
   padding: 4rem 0;
@@ -203,20 +204,21 @@ h1 {
   max-width: 780px;
   margin-bottom: 1rem;
   color: var(--ink-soft);
-  font-size: clamp(1.35rem, 2.6vw, 2.05rem);
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
   line-height: 1.18;
   font-weight: 700;
 }
 
 .hero-summary {
-  max-width: 700px;
+  max-width: 720px;
   margin-bottom: 0;
   color: var(--muted);
   font-size: 1.05rem;
 }
 
 .hero-actions,
-.contact-actions {
+.contact-actions,
+.case-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -264,18 +266,26 @@ h1 {
   border-color: rgba(255, 255, 255, 0.34);
 }
 
-.profile-panel {
+.profile-panel,
+.case-study,
+.project-item,
+.skills-table,
+.capability-grid {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
+}
+
+.profile-panel {
   box-shadow: var(--shadow);
   overflow: hidden;
 }
 
 .profile-photo {
   width: 100%;
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
+  object-position: top left;
   background: var(--surface-alt);
 }
 
@@ -308,14 +318,17 @@ h1 {
 .project-item p,
 .project-item li,
 .skill-row span,
-.contact-section p {
+.contact-section p,
+.case-problem,
+.proof-list li {
   color: var(--muted);
 }
 
 .profile-meta p,
 .capability-item p,
 .project-item p,
-.contact-section p {
+.contact-section p,
+.case-problem {
   margin-bottom: 0;
 }
 
@@ -367,7 +380,7 @@ h1 {
 .section-header h2,
 .contact-section h2 {
   margin-bottom: 0.85rem;
-  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-size: clamp(2rem, 4vw, 3.7rem);
   line-height: 1.02;
   font-weight: 800;
 }
@@ -384,11 +397,116 @@ h1 {
   margin-bottom: 0.3rem;
 }
 
+.case-study-section {
+  padding-top: 5.5rem;
+}
+
+.case-study-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.case-study {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+  overflow: hidden;
+  box-shadow: 0 12px 34px rgba(16, 20, 24, 0.06);
+}
+
+.case-study:nth-child(even) {
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+}
+
+.case-study:nth-child(even) .case-media {
+  order: 2;
+}
+
+.case-media {
+  min-height: 100%;
+  background: #111827;
+}
+
+.case-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.case-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.case-content h3 {
+  margin: 0.55rem 0 0.75rem;
+  font-size: clamp(1.65rem, 3vw, 2.55rem);
+  line-height: 1.05;
+}
+
+.case-problem {
+  font-size: 1.02rem;
+}
+
+.finding {
+  margin: 1rem 0 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--accent);
+  background: #f1f8f6;
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+}
+
+.finding strong {
+  color: var(--accent-dark);
+}
+
+.proof-list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 1.25rem 0;
+  padding-left: 1.1rem;
+}
+
+.tech-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tech-strip span {
+  padding: 0.38rem 0.62rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.decision-lab-card {
+  border-color: #b8d1cc;
+}
+
+.spotify-card {
+  border-color: #b9dcc6;
+}
+
+.spotify-card .button-primary {
+  background: #16813d;
+}
+
+.spotify-card .button-primary:hover,
+.spotify-card .button-primary:focus-visible {
+  background: #0f642e;
+}
+
 .capability-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
   overflow: hidden;
 }
 
@@ -421,9 +539,6 @@ h1 {
   align-items: center;
   gap: 1.5rem;
   padding: 1.3rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
   box-shadow: 0 10px 30px rgba(16, 20, 24, 0.04);
 }
 
@@ -461,10 +576,7 @@ h1 {
 
 .skills-table {
   display: grid;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
   overflow: hidden;
-  background: var(--surface);
 }
 
 .skill-row {
@@ -522,16 +634,27 @@ h1 {
   margin-bottom: 0;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1040px) {
   .hero,
   .split-header,
-  .contact-section {
+  .contact-section,
+  .case-study,
+  .case-study:nth-child(even) {
     grid-template-columns: 1fr;
   }
 
   .hero {
     min-height: auto;
     padding: 3rem 0;
+  }
+
+  .case-study:nth-child(even) .case-media {
+    order: 0;
+  }
+
+  .case-media img {
+    min-height: auto;
+    aspect-ratio: 16 / 10;
   }
 
   .capability-grid {
@@ -607,7 +730,10 @@ h1 {
     align-items: start;
   }
 
-  .text-link {
+  .text-link,
+  .case-actions .button,
+  .hero-actions .button,
+  .contact-actions .button {
     width: 100%;
   }
 
@@ -616,6 +742,14 @@ h1 {
   .contact-section {
     padding-top: 3.5rem;
     padding-bottom: 3.5rem;
+  }
+
+  .case-study-section {
+    padding-top: 4rem;
+  }
+
+  .case-content {
+    padding: 1.2rem;
   }
 
   .site-footer {
