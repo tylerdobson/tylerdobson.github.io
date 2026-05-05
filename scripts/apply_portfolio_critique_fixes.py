@@ -200,7 +200,7 @@ def build_spotify_finding(rows: Iterable[dict[str, object]]) -> str:
                 "Finding: My saved Spotify history shows my listening breadth "
                 f"{direction} from {previous_unique} to {latest_unique} unique artists between "
                 f"{month_label(previous_month)} and {month_label(latest_month)}; "
-                f"{latest_top_artist} led the latest month with {latest_top_artist_plays} plays."
+                f"the leading artist in the latest month had {latest_top_artist_plays} plays."
             )
 
     top_hour, top_hour_plays = most_common(hour_counts)
@@ -209,15 +209,15 @@ def build_spotify_finding(rows: Iterable[dict[str, object]]) -> str:
 
     if latest_top_track_plays >= 2:
         return (
-            f"Finding: In {month_label(latest_month)}, my saved Spotify history was led by "
-            f"{latest_top_artist} ({latest_top_artist_plays} plays); the top repeated track "
+            f"Finding: In {month_label(latest_month)}, my saved Spotify history showed a repeat-listening pattern: "
+            f"the leading artist had {latest_top_artist_plays} plays, and the top repeated track "
             f"appeared {latest_top_track_plays} times, turning the raw API feed into a "
             "repeat-listening pattern."
         )
 
     return (
         f"Finding: Across {len(parsed)} saved Spotify plays ({round(total_minutes / 60, 1)} hours), "
-        f"the dashboard surfaced {len(artist_counts)} unique artists; {top_artist} led with "
+        f"the dashboard surfaced {len(artist_counts)} unique artists; the leading artist had "
         f"{top_artist_plays} plays and {int(top_hour):02d}:00 was the most common listening hour "
         f"with {top_hour_plays} plays."
     )

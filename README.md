@@ -26,7 +26,7 @@ Validation notes: https://github.com/tylerdobson/mvp-for-a-decision-intelligence
 
 Professional Streamlit dashboard for Spotify OAuth analytics, live playback context, top tracks and artists, local SQLite listening history, playlist workflows, demo-safe review, and data exports.
 
-Finding: In May 2026, my saved Spotify history was led by Twizzlet (8 plays); the top repeated track appeared 4 times, turning the raw API feed into a repeat-listening pattern.
+Finding: In May 2026, my saved Spotify history showed a repeat-listening pattern: the leading artist had 8 plays, and the top repeated track appeared 4 times, turning the raw API feed into a repeat-listening pattern.
 
 Repository: https://github.com/tylerdobson/Spotify-Analytics-
 
