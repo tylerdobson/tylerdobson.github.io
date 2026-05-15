@@ -12,15 +12,24 @@ const { project } = Astro.props;
   class="rounded-xl border border-border bg-bg-elev p-6 sm:p-8 transition-colors hover:border-border-strong"
 >
   {
-    project.image && (
-      <div class="mb-6 overflow-hidden rounded-lg border border-border">
+    project.image?.src && (
+      <figure class="mb-6 overflow-hidden rounded-lg border border-border bg-bg">
         <img
-          src={project.image}
-          alt={`${project.title} preview`}
+          src={project.image.src}
+          alt={project.image.alt}
+          width={project.image.width}
+          height={project.image.height}
           loading="lazy"
-          class="block h-auto w-full"
+          decoding="async"
+          class="block aspect-[16/10] w-full object-cover"
         />
-      </div>
+        <figcaption
+          class="border-t border-border px-4 py-3 font-mono text-[10px] leading-relaxed tracking-[0.08em] text-text-muted"
+          style="font-family: var(--font-mono);"
+        >
+          {project.image.caption}
+        </figcaption>
+      </figure>
     )
   }
 

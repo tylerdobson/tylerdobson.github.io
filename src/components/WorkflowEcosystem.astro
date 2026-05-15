@@ -1,0 +1,127 @@
+---
+import SectionLabel from "./SectionLabel.astro";
+import { getVisibleTools, publicVerifiedTools, toolLayers } from "../content/toolEcosystem.ts";
+
+const usageMeta = {
+  "used in shipped projects": {
+    label: "Shipped",
+    className: "border-success/40 bg-success-dim text-text",
+  },
+  "used in active workflows": {
+    label: "Active",
+    className: "border-success/40 bg-success-dim text-text",
+  },
+  "used for learning / experimentation": {
+    label: "Learning",
+    className: "border-border-strong bg-bg-elev-2 text-text-dim",
+  },
+  "mentioned in target workflows": {
+    label: "Target",
+    className: "border-border-strong bg-bg-elev-2 text-text-muted",
+  },
+} as const;
+
+const shippedCount = publicVerifiedTools.filter(
+  (tool) => tool.usage === "used in shipped projects",
+).length;
+const activeCount = publicVerifiedTools.filter(
+  (tool) => tool.usage === "used in active workflows",
+).length;
+---
+
+<section id="workflow" class="px-6 py-20 sm:px-10 sm:py-24">
+  <div class="mx-auto max-w-[72rem]">
+    <SectionLabel number="04" label="Workflow ecosystem" />
+    <div class="mt-3 grid gap-6 lg:grid-cols-[1fr_21rem] lg:items-end">
+      <div>
+        <h2
+          class="max-w-3xl font-light tracking-tight text-text"
+          style="font-size: clamp(1.75rem, 3vw, 2.5rem);"
+        >
+          The toolchain behind the projects.
+        </h2>
+        <p class="mt-5 max-w-3xl text-base leading-relaxed text-text-dim">
+          A public-safe map of the applications, data tools, AI systems, and automation platforms
+          used across my portfolio and Second Brain workflows.
+        </p>
+      </div>
+
+      <aside class="rounded-xl border border-border bg-bg-elev p-5">
+        <p
+          class="font-mono text-[10px] uppercase tracking-[0.14em] text-text-muted"
+          style="font-family: var(--font-mono);"
+        >
+          Evidence filter
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-text-dim">
+          Rendering {publicVerifiedTools.length} public, verified tools only. {shippedCount} have shipped-project evidence; {activeCount} are active-workflow tools.
+        </p>
+      </aside>
+    </div>
+
+    <div
+      class="mt-10 overflow-hidden rounded-xl border border-border bg-bg-elev"
+      aria-label="Layered workflow ecosystem map"
+    >
+      {
+        toolLayers.map((layer, index) => {
+          const tools = getVisibleTools(layer.toolNames);
+
+          return (
+            <div class="grid min-w-0 gap-6 border-b border-border p-6 last:border-b-0 lg:grid-cols-[16rem_1fr] lg:p-7">
+              <div class="flex gap-4 lg:block">
+                <div
+                  class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border-strong bg-bg-elev-2 font-mono text-xs text-accent"
+                  style="font-family: var(--font-mono);"
+                  aria-hidden="true"
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+                <div class="min-w-0 lg:mt-4">
+                  <p
+                    class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+                    style="font-family: var(--font-mono);"
+                  >
+                    {layer.label}
+                  </p>
+                  <h3 class="mt-2 text-lg font-medium leading-snug text-text">{layer.heading}</h3>
+                  <p class="mt-3 text-sm leading-relaxed text-text-dim">{layer.description}</p>
+                </div>
+              </div>
+
+              <ul class="grid min-w-0 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                {tools.map((tool) => {
+                  const meta = usageMeta[tool.usage];
+
+                  return (
+                    <li class="min-w-0 overflow-hidden rounded-lg border border-border bg-bg px-4 py-3 transition-colors hover:border-border-strong">
+                      <div class="flex min-w-0 items-start justify-between gap-3">
+                        <span class="min-w-0 break-words text-sm font-medium text-text">
+                          {tool.displayLabel}
+                        </span>
+                        <span
+                          class={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em] ${meta.className}`}
+                          style="font-family: var(--font-mono);"
+                        >
+                          {meta.label}
+                        </span>
+                      </div>
+                      <p class="mt-2 break-words text-xs leading-relaxed text-text-dim">{tool.role}</p>
+                      <p
+                        class="mt-3 block max-w-full truncate font-mono text-[10px] leading-relaxed text-text-muted"
+                        style="font-family: var(--font-mono);"
+                        title={tool.projects.join(" · ")}
+                      >
+                        {tool.projects.join(" · ")}
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

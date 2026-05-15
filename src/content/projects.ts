@@ -1,3 +1,6 @@
+import type { ProjectImage } from "./projectImages.ts";
+import { getProjectImage } from "./projectImages.ts";
+
 export type TechTag = string;
 
 export interface ProjectLink {
@@ -7,19 +10,22 @@ export interface ProjectLink {
 }
 
 export interface ProjectCardData {
+  slug: string;
   title: string;
   description: string;
   tech: TechTag[];
-  image?: string;
+  image?: ProjectImage;
   finding?: string;
   links: ProjectLink[];
 }
 
 export interface SmallProjectData {
+  slug: string;
   title: string;
   description: string;
   tech: TechTag[];
   repo: string;
+  image?: ProjectImage;
 }
 
 export const flagshipProject = {
@@ -50,11 +56,12 @@ export const flagshipProject = {
 
 export const caseStudies: ProjectCardData[] = [
   {
+    slug: "retail-kpi",
     title: "Retail KPI & Forecasting Sandbox",
     description:
       "A retail KPI sample workflow that turns modeled operating data into KPIs, forecast ranges, scenario tests, exports, and executive recommendations.",
     tech: ["Python", "SQL", "Streamlit", "SQLite", "Plotly", "pytest"],
-    image: "/assets/projects/retail-kpi/hero.png.placeholder.svg",
+    image: getProjectImage("retail-kpi"),
     finding:
       "Finding: The recommendation engine flags low-margin, high-volume segments as risk — one example action is to improve product economics before pushing more volume.",
     links: [
@@ -76,11 +83,12 @@ export const caseStudies: ProjectCardData[] = [
     ],
   },
   {
+    slug: "spotify-analysis",
     title: "Spotify Analytics Dashboard",
     description:
       "A professional dashboard for personal Spotify analytics with API data collection, playlist workflows, local persistence, and a demo-safe public review path.",
     tech: ["Python", "Streamlit", "Spotipy", "SQLite", "Plotly", "OAuth"],
-    image: "/assets/projects/spotify-analytics/hero.png.placeholder.svg",
+    image: getProjectImage("spotify-analysis"),
     finding:
       "Finding: In May 2026, saved listening history showed a repeat-listening pattern — leading artist at 8 plays, top repeated track at 4 plays, turning a raw API feed into a behavioral insight.",
     links: [
@@ -102,6 +110,7 @@ export const caseStudies: ProjectCardData[] = [
     ],
   },
   {
+    slug: "sec-pipeline",
     title: "SEC Financial Statement Pipeline",
     description:
       "Reproducible Python ETL that pulls official SEC EDGAR company facts, standardizes financial metrics, and publishes CSV, SQLite, and Markdown outputs.",
@@ -118,6 +127,7 @@ export const caseStudies: ProjectCardData[] = [
 
 export const moreProjects: SmallProjectData[] = [
   {
+    slug: "airbnb-market-intelligence",
     title: "Airbnb Market Intelligence Dashboard",
     description:
       "End-to-end short-term rental analytics with SQLite storage, KPI calculations, Plotly visualizations, and an interactive Streamlit dashboard.",
@@ -125,6 +135,7 @@ export const moreProjects: SmallProjectData[] = [
     repo: "https://github.com/tylerdobson/airbnb-market-intelligence-dashboard",
   },
   {
+    slug: "canvas-assignment-calendar-agent",
     title: "Canvas Assignment Calendar Agent",
     description:
       "Python automation that reads Canvas assignments, finds incomplete work due today, and creates or updates Google Calendar events.",
@@ -132,6 +143,7 @@ export const moreProjects: SmallProjectData[] = [
     repo: "https://github.com/tylerdobson/Canvas-Assignment-Calendar-Agent",
   },
   {
+    slug: "sales-data-cleaning-standardization",
     title: "Sales Data Cleaning Pipeline",
     description:
       "Cleaning pipeline that converts inconsistent monthly sales exports into validated, analysis-ready files with rejected-record handling.",
@@ -139,6 +151,7 @@ export const moreProjects: SmallProjectData[] = [
     repo: "https://github.com/tylerdobson/sales-data-cleaning-standardization",
   },
   {
+    slug: "sql-retail-revenue-analysis",
     title: "SQL Retail Revenue Analysis",
     description:
       "Relational SQL analysis of customers, products, orders, revenue by region, top customers, best-selling products, and trends.",
@@ -146,13 +159,16 @@ export const moreProjects: SmallProjectData[] = [
     repo: "https://github.com/tylerdobson/sql-retail-revenue-analysis",
   },
   {
+    slug: "tableau-forecasting-discount-analysis",
     title: "Tableau Forecasting & Discount Analysis",
     description:
       "Executive-style dashboard on sales performance, profitability, discount behavior, and regional comparison.",
     tech: ["Tableau", "BI"],
     repo: "https://github.com/tylerdobson/tableau-forecasting-discount-analysis",
+    image: getProjectImage("tableau-forecasting-discount-analysis"),
   },
   {
+    slug: "sql-labor-market-intelligence",
     title: "SQL Labor Market Intelligence",
     description:
       "Warehouse-style SQL project using dimension tables, fact tables, reusable views, and quality checks.",
@@ -160,6 +176,7 @@ export const moreProjects: SmallProjectData[] = [
     repo: "https://github.com/tylerdobson/sql-labor-market-intelligence",
   },
   {
+    slug: "job-application-quick-fill",
     title: "Job Application Quick-Fill",
     description:
       "Python CLI for searching saved application answers, filling template variables, and tracking usage.",
