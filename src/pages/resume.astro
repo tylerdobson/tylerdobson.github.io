@@ -18,16 +18,19 @@ try {
 }
 
 const stackGroups = [
-  ["Languages", "Python · SQL · R · JavaScript · HTML/CSS · Java"],
+  ["Languages", "Python · SQL · JavaScript · HTML/CSS · Java · R"],
   [
-    "Data & Analytics",
-    "pandas · ETL pipelines · data cleaning · data validation · KPI design · exploratory data analysis",
+    "AI / ML",
+    "Claude · GPT-4o · Anthropic Console · Cursor · prompt engineering · multi-agent design · LLM tool orchestration · validation loops · human-in-the-loop review",
+  ],
+  [
+    "Data Engineering",
+    "ETL pipelines · schema design · API integration (OAuth, retries) · SQLite-backed analytics stores · reproducible transformations · data validation",
   ],
   ["BI & Visualization", "Tableau · Power BI · Streamlit · Plotly · Excel"],
-  ["Databases", "SQLite · warehouse-style schemas · joins · aggregations · reusable views"],
   [
-    "AI & Automation",
-    "Claude Code · Codex · Cursor · Anthropic Console · LLM tool orchestration · prompt engineering · validation loops · human-in-the-loop review · n8n · Zapier · Glean · Obsidian",
+    "Automation",
+    "Zapier · n8n · Google Apps Script · GitHub Actions · scheduled jobs · event-driven workflows",
   ],
   [
     "Tools & Workflow",
@@ -36,6 +39,15 @@ const stackGroups = [
 ];
 
 const projects = [
+  {
+    title: "Job Application Automation System",
+    stack: "Zapier, GPT-4o, Anthropic Claude, Google Sheets / Gmail / Calendar, GitHub",
+    bullets: [
+      "Designed and shipped a multi-agent AI workflow integrating 8 tools and 5 event-driven Zaps; assigned GPT-4o to structured extraction and Anthropic Claude to reasoning and writing — running an end-to-end personal job search on autopilot.",
+      "Built a 23-field Google Sheets Master Tracker enriched by both LLMs with fit scores, role summaries, and human-in-the-loop follow-up drafts; never auto-sends outbound email.",
+      "Version-controlled prompts, Google Apps Script, and Zapier specs in GitHub with documented schemas and a setup checklist so a peer can rerun the system from scratch.",
+    ],
+  },
   {
     title: "Decision Intelligence Lab",
     stack: "Python, pandas, pytest",
@@ -46,21 +58,19 @@ const projects = [
     ],
   },
   {
-    title: "Airbnb Market Intelligence Dashboard",
-    stack: "Python, SQL, SQLite, Streamlit",
-    bullets: [
-      "Analyzed 1,631 listings to surface pricing, occupancy, licensing, and revenue patterns across the market.",
-      "Quantified $179.46 average nightly rate, approximately $37.66M in revenue proxy, and 58.98% licensed inventory share.",
-      "Built an interactive Streamlit dashboard backed by a SQLite analytical warehouse with reusable views for repeatable reporting.",
-    ],
-  },
-  {
     title: "Tableau Forecasting & Discount Analysis",
     stack: "Tableau",
     bullets: [
       "Analyzed $2.30M in sales (+13.6% YoY) across regions, customer segments, and product categories at a 12.4% margin.",
-      "Built Tableau dashboards isolating discount impact on profitability and surfacing performance drivers by region and segment.",
-      "Produced a forecast projecting approximately $415K in profit to support business planning and performance review.",
+      "Built Tableau dashboards isolating discount impact on profitability; forecast projected approximately $415K in profit to support business planning.",
+    ],
+  },
+  {
+    title: "Airbnb Market Intelligence Dashboard",
+    stack: "Python, SQL, SQLite, Streamlit",
+    bullets: [
+      "Analyzed 1,631 listings; quantified $179.46 average nightly rate, approximately $37.66M in revenue proxy, and 58.98% licensed inventory share.",
+      "Built an interactive Streamlit dashboard backed by a SQLite analytical warehouse with reusable views for repeatable reporting.",
     ],
   },
   {
@@ -69,23 +79,6 @@ const projects = [
     bullets: [
       "Built an end-to-end ETL pipeline ingesting SEC EDGAR filings into structured balance sheet, income statement, and cash flow tables.",
       "Designed reproducible transformations with explicit schemas and documented assumptions for downstream financial analysis.",
-    ],
-  },
-  {
-    title: "SQL Retail Revenue & Labor Market Analysis",
-    stack: "SQL, SQLite",
-    bullets: [
-      "Authored warehouse-style schemas, reusable SQL views, and analytical queries for revenue, customer, and segment trend analysis.",
-      "Built a parallel labor-market intelligence project analyzing affordability and income trends using reusable query patterns.",
-    ],
-  },
-  {
-    title: "Job Market Skill Radar (private; in active development)",
-    stack: "Python (stdlib), unittest",
-    bullets: [
-      "Sanitized 17-posting internship pilot corpus, extracted skill signals, and mapped them to category and role-family summary CSVs.",
-      "Generated Markdown evidence-gap reports linking required skills to existing portfolio artifacts.",
-      "24 passing unit tests with banned-language guard for output discipline; MIT licensed.",
     ],
   },
 ];
@@ -238,16 +231,14 @@ const leadership = [
             Professional summary
           </p>
           <p class="mt-3 text-base leading-relaxed text-text-dim">
-            Artificial Intelligence, Business Analytics &amp; Information Systems student at the
-            University of South Florida targeting Summer and Fall 2026 internships across Data
-            Engineering, AI Engineering, Machine Learning, Data Analytics, Business
-            Intelligence, Information Systems, and AI Automation. Built 12+ end-to-end portfolio
-            projects spanning Python, SQL, Tableau, Streamlit, SQLite, reproducible ETL, and
-            AI-assisted workflow systems. Quantified independent work includes a $2.30M sales
-            forecasting analysis, a 1,631-listing market intelligence dashboard, a SEC EDGAR
-            financial-statement pipeline, and a decision-intelligence platform that runs KPI,
-            forecasting, scenario-analysis, and recommendation engines against a 1,728-record
-            dataset under pytest coverage.
+            Junior at the University of South Florida studying Artificial Intelligence, Business
+            Analytics &amp; Information Systems, building AI-powered systems that turn manual
+            workflows into automated infrastructure. 12+ end-to-end portfolio projects including
+            a multi-agent job application automation system running on Zapier + GPT-4o + Claude,
+            a $2.30M Tableau forecasting study, a 1,631-listing market intelligence dashboard,
+            and a SEC EDGAR financial-statement ETL pipeline. Available Summer and Fall 2026 for
+            Data, AI, and ML Engineering internships — also open to Data Analytics, BI,
+            Information Systems, and AI Automation roles.
           </p>
         </section>
 
