@@ -51,10 +51,10 @@ Only tools with `visibility: public` and `confidence: verified` are rendered.
 
 | Local asset | Source | Status |
 | --- | --- | --- |
-| `public/images/projects/decision-intelligence-lab/hero.webp` | `tylerdobson/mvp-for-a-decision-intelligence-lab/assets/demo/hero.png` | verified |
-| `public/images/projects/decision-intelligence-lab/dashboard-overview.webp` | `tylerdobson/mvp-for-a-decision-intelligence-lab/assets/demo/dashboard-overview.png` | verified |
-| `public/images/projects/spotify-analysis/hero.webp` | `tylerdobson/Spotify-Analytics-/assets/demo/hero.png` | verified |
-| `public/images/projects/spotify-analysis/workflow.webp` | `tylerdobson/Spotify-Analytics-/assets/demo/workflow.png` | verified |
+| `public/images/projects/kpi-dashboard/hero.webp` | `tylerdobson/mvp-for-a-decision-intelligence-lab/assets/demo/hero.png` | verified |
+| `public/images/projects/kpi-dashboard/dashboard-overview.webp` | `tylerdobson/mvp-for-a-decision-intelligence-lab/assets/demo/dashboard-overview.png` | verified |
+| `public/images/projects/spotify-analytics/hero.webp` | `tylerdobson/Spotify-Analytics-/assets/demo/hero.png` | verified |
+| `public/images/projects/spotify-analytics/workflow.webp` | `tylerdobson/Spotify-Analytics-/assets/demo/workflow.png` | verified |
 | `public/images/projects/tableau-forecasting-discount-analysis/dashboard.webp` | `tylerdobson/tableau-forecasting-discount-analysis/0cfa84ad-c4a3-4243-87e5-c306cde19fef.png` | verified |
 
 ## Tools Excluded Or Not Prominently Rendered

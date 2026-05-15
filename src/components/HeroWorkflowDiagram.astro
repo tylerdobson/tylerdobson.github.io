@@ -1,0 +1,280 @@
+---
+import { visibleWorkflowNodes, workflowEdges } from "../content/workflowMap.ts";
+
+const ariaLabel =
+  "Portfolio workflow operating system diagram showing capture, Second Brain planning, AI implementation, data workflows, analytics surfaces, automation, validation, and portfolio outputs.";
+
+const toolLines: Record<string, string[]> = {
+  capture: ["Forms · Gmail", "Calendar · GitHub"],
+  "second-brain": ["Obsidian · Markdown", "briefs · changelogs"],
+  ai: ["Claude · Claude Code", "Codex · ChatGPT", "GPT-4o · Cursor"],
+  data: ["Python · pandas", "SQL · SQLite · APIs"],
+  analytics: ["Tableau · Power BI", "Streamlit · Plotly"],
+  automation: ["Zapier · n8n", "GitHub Actions"],
+  validation: ["pytest · unittest", "README · checklists"],
+  output: ["dashboards · reports", "case studies"],
+};
+
+const nodeLayout: Record<
+  string,
+  { x: number; y: number; width: number; height: number; tone?: "hub" | "output" }
+> = {
+  capture: { x: 28, y: 220, width: 128, height: 94 },
+  "second-brain": { x: 188, y: 196, width: 152, height: 126, tone: "hub" },
+  ai: { x: 374, y: 52, width: 178, height: 112, tone: "hub" },
+  data: { x: 374, y: 218, width: 164, height: 112 },
+  analytics: { x: 552, y: 184, width: 150, height: 108 },
+  automation: { x: 374, y: 392, width: 164, height: 98 },
+  validation: { x: 188, y: 394, width: 152, height: 108 },
+  output: { x: 552, y: 382, width: 150, height: 112, tone: "output" },
+};
+
+const edgePathMap: Record<string, string> = {
+  "capture->second-brain": "M156 267 C172 267 176 259 188 259",
+  "second-brain->ai": "M308 196 C330 130 348 108 374 108",
+  "second-brain->data": "M340 259 C354 259 360 274 374 274",
+  "ai->data": "M462 164 L462 218",
+  "data->analytics": "M538 270 C548 270 548 238 552 238",
+  "data->automation": "M456 330 L456 392",
+  "data->validation": "M374 316 C350 360 348 420 340 448",
+  "automation->output": "M538 442 C546 442 546 438 552 438",
+  "analytics->output": "M627 292 L627 382",
+  "validation->output": "M340 452 C420 518 486 516 552 466",
+};
+
+const heroNodes = visibleWorkflowNodes
+  .map((node) => ({ ...node, layout: nodeLayout[node.id] }))
+  .filter((node) => Boolean(node.layout));
+
+const heroEdges = workflowEdges
+  .map((edge) => ({
+    ...edge,
+    path: edgePathMap[`${edge.from}->${edge.to}`],
+  }))
+  .filter((edge) => Boolean(edge.path));
+
+const mobileNodeIds = ["capture", "second-brain", "ai", "data", "validation", "output"];
+const mobileNodes = mobileNodeIds
+  .map((id) => heroNodes.find((node) => node.id === id))
+  .filter((node): node is (typeof heroNodes)[number] => Boolean(node));
+---
+
+<div class="mx-auto w-full max-w-[42rem]">
+  <div class="hidden sm:block">
+    <svg
+      viewBox="0 0 720 540"
+      role="img"
+      aria-label={ariaLabel}
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-auto w-full select-none"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <title>Portfolio Workflow OS</title>
+      <desc>{ariaLabel}</desc>
+      <defs>
+        <marker
+          id="hero-workflow-arrow"
+          viewBox="0 0 10 10"
+          refX="9"
+          refY="5"
+          markerWidth="5"
+          markerHeight="5"
+          orient="auto"
+        >
+          <path d="M0,0 L10,5 L0,10 z" fill="#2A2A3E"></path>
+        </marker>
+        <marker
+          id="hero-workflow-arrow-accent"
+          viewBox="0 0 10 10"
+          refX="9"
+          refY="5"
+          markerWidth="5"
+          markerHeight="5"
+          orient="auto"
+        >
+          <path d="M0,0 L10,5 L0,10 z" fill="#6C63FF" opacity="0.55"></path>
+        </marker>
+      </defs>
+
+      <style is:inline>
+        .workflow-shell {
+          fill: #0a0a0f;
+          stroke: #1e1e2e;
+          stroke-width: 1;
+        }
+        .workflow-node {
+          fill: #12121a;
+          stroke: #2a2a3e;
+          stroke-width: 1;
+        }
+        .workflow-node.hub {
+          stroke: #6c63ff;
+          stroke-width: 1.35;
+        }
+        .workflow-node.output {
+          fill: #1a1a24;
+          stroke: #6b8e6f;
+          stroke-width: 1.25;
+        }
+        .workflow-title {
+          fill: #e2e2e8;
+          font-family: "Inter", system-ui, sans-serif;
+          font-size: 21px;
+          font-weight: 500;
+        }
+        .workflow-caption {
+          fill: #808096;
+          font-family: "IBM Plex Mono", monospace;
+          font-size: 11.5px;
+          letter-spacing: 0.08em;
+        }
+        .workflow-label {
+          fill: #e2e2e8;
+          font-family: "Inter", system-ui, sans-serif;
+          font-size: 17px;
+          font-weight: 500;
+        }
+        .workflow-tools {
+          fill: #9999a8;
+          font-family: "IBM Plex Mono", monospace;
+          font-size: 12px;
+          letter-spacing: 0.04em;
+        }
+        .workflow-tag {
+          fill: #6c63ff;
+          font-family: "IBM Plex Mono", monospace;
+          font-size: 10px;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+        }
+        .workflow-edge {
+          stroke: #2a2a3e;
+          stroke-width: 1.2;
+          fill: none;
+        }
+        .workflow-edge.accent {
+          stroke: #6c63ff;
+          stroke-width: 1;
+          stroke-dasharray: 5 5;
+          opacity: 0.55;
+        }
+        .workflow-loop {
+          fill: none;
+          stroke: #2a2a3e;
+          stroke-width: 1;
+          stroke-dasharray: 4 4;
+          opacity: 0.7;
+        }
+      </style>
+
+      <rect x="10" y="12" width="700" height="510" rx="18" class="workflow-shell"></rect>
+      <text x="30" y="48" class="workflow-title">Portfolio Workflow OS</text>
+      <text x="30" y="70" class="workflow-caption">
+        Second Brain → AI → validated outputs
+      </text>
+
+      <g aria-hidden="true">
+        {
+          heroEdges.map((edge, index) => (
+            <path
+              d={edge.path}
+              class={`diagram-edge workflow-edge ${edge.from === "second-brain" || edge.from === "ai" ? "accent" : ""} ${index > 3 ? "delay-2" : index > 1 ? "delay-1" : ""}`}
+              marker-end={
+                edge.from === "second-brain" || edge.from === "ai"
+                  ? "url(#hero-workflow-arrow-accent)"
+                  : "url(#hero-workflow-arrow)"
+              }
+              style="--dash-len: 260;"
+            />
+          ))
+        }
+        <path
+          d="M632 494 C604 524 526 528 456 490"
+          class="workflow-loop diagram-edge delay-3"
+          style="--dash-len: 270;"
+        ></path>
+      </g>
+
+      {
+        heroNodes.map((node) => (
+          <g>
+            <rect
+              x={node.layout.x}
+              y={node.layout.y}
+              width={node.layout.width}
+              height={node.layout.height}
+              rx="10"
+              class={`workflow-node ${node.layout.tone ?? ""}`}
+            ></rect>
+            <text
+              x={node.layout.x + 16}
+              y={node.layout.y + 26}
+              class="workflow-tag"
+            >
+              {node.group.replace("-", " / ")}
+            </text>
+            <text
+              x={node.layout.x + 16}
+              y={node.layout.y + 50}
+              class="workflow-label"
+            >
+              {node.label}
+            </text>
+            {(toolLines[node.id] ?? node.tools).map((line, lineIndex) => (
+              <text
+                x={node.layout.x + 16}
+                y={node.layout.y + 76 + lineIndex * 18}
+                class="workflow-tools"
+              >
+                {line}
+              </text>
+            ))}
+          </g>
+        ))
+      }
+    </svg>
+  </div>
+
+  <div
+    class="sm:hidden rounded-xl border border-border bg-bg-elev p-4"
+    role="img"
+    aria-label={ariaLabel}
+  >
+    <p
+      class="font-mono text-[10px] uppercase tracking-[0.14em] text-accent"
+      style="font-family: var(--font-mono);"
+    >
+      Portfolio Workflow OS
+    </p>
+    <ol class="mt-4 space-y-3">
+      {
+        mobileNodes.map((node, index) => (
+          <li class="grid grid-cols-[2rem_1fr] gap-3 rounded-lg border border-border bg-bg px-3 py-3">
+            <span
+              class="font-mono text-[10px] text-text-muted"
+              style="font-family: var(--font-mono);"
+              aria-hidden="true"
+            >
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span>
+              <span class="block text-sm font-medium text-text">{node.label}</span>
+              <span
+                class="mt-1 block font-mono text-[10px] leading-relaxed text-text-dim"
+                style="font-family: var(--font-mono);"
+              >
+                {(toolLines[node.id] ?? node.tools).join(" · ")}
+              </span>
+            </span>
+          </li>
+        ))
+      }
+    </ol>
+    <p
+      class="mt-4 font-mono text-[10px] leading-relaxed text-text-muted"
+      style="font-family: var(--font-mono);"
+    >
+      Second Brain → AI implementation → data workflows → validated outputs
+    </p>
+  </div>
+</div>

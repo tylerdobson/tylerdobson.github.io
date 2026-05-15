@@ -6,7 +6,7 @@ export type ProjectImageType =
   | "chart"
   | "placeholder";
 
-export type ProjectImageStatus = "verified" | "placeholder" | "needs replacement";
+export type ProjectImageStatus = "verified" | "placeholder" | "needs-replacement";
 
 export interface ProjectImage {
   slug: string;
@@ -23,19 +23,19 @@ export interface ProjectImage {
 export const projectImages: ProjectImage[] = [
   {
     slug: "retail-kpi",
-    src: "/images/projects/decision-intelligence-lab/hero.webp",
+    src: "/images/projects/kpi-dashboard/hero.webp",
     width: 3200,
     height: 2000,
     type: "dashboard",
     alt: "Retail KPI and Forecasting Sandbox Streamlit dashboard with KPI, forecast, and recommendation panels",
-    caption: "Verified Streamlit dashboard screenshot from the Decision Intelligence Lab repo.",
+    caption: "Verified KPI dashboard screenshot from the Decision Intelligence Lab repo.",
     evidenceSource:
       "GitHub: tylerdobson/mvp-for-a-decision-intelligence-lab/assets/demo/hero.png",
     status: "verified",
   },
   {
     slug: "decision-intelligence-lab-dashboard",
-    src: "/images/projects/decision-intelligence-lab/dashboard-overview.webp",
+    src: "/images/projects/kpi-dashboard/dashboard-overview.webp",
     width: 3200,
     height: 2000,
     type: "dashboard",
@@ -47,7 +47,7 @@ export const projectImages: ProjectImage[] = [
   },
   {
     slug: "spotify-analysis",
-    src: "/images/projects/spotify-analysis/hero.webp",
+    src: "/images/projects/spotify-analytics/hero.webp",
     width: 3200,
     height: 1800,
     type: "dashboard",
@@ -58,7 +58,7 @@ export const projectImages: ProjectImage[] = [
   },
   {
     slug: "spotify-analysis-workflow",
-    src: "/images/projects/spotify-analysis/workflow.webp",
+    src: "/images/projects/spotify-analytics/workflow.webp",
     width: 3200,
     height: 1800,
     type: "workflow",
@@ -95,7 +95,7 @@ export const projectImages: ProjectImage[] = [
     caption:
       "Private active project; needs a public-safe screenshot before visual promotion.",
     evidenceSource: "Resume highlight only; no public GitHub media located.",
-    status: "needs replacement",
+    status: "needs-replacement",
   },
   {
     slug: "sec-pipeline",
@@ -103,7 +103,7 @@ export const projectImages: ProjectImage[] = [
     alt: "SEC Financial Statement Pipeline project image placeholder",
     caption: "Needs a public-safe pipeline diagram or output screenshot.",
     evidenceSource: "GitHub repo inspected; no image assets or README media located.",
-    status: "needs replacement",
+    status: "needs-replacement",
   },
   {
     slug: "airbnb-market-intelligence",
@@ -111,7 +111,7 @@ export const projectImages: ProjectImage[] = [
     alt: "Airbnb Market Intelligence project image placeholder",
     caption: "Needs a public-safe Streamlit or Tableau dashboard screenshot.",
     evidenceSource: "GitHub repo inspected; no image assets or README media located.",
-    status: "needs replacement",
+    status: "needs-replacement",
   },
 ];
 

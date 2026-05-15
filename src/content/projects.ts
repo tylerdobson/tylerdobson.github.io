@@ -187,8 +187,8 @@ export const moreProjects: SmallProjectData[] = [
 
 export const skillTiers = [
   {
-    tier: "TIER 1",
-    label: "AI & ML Systems",
+    tier: "AI / ML",
+    label: "Systems and model workflows",
     items: [
       "Prompt engineering and structured extraction (OpenAI GPT-4o, Anthropic Claude)",
       "Multi-agent orchestration with role separation (extraction vs. reasoning)",
@@ -197,8 +197,8 @@ export const skillTiers = [
     ],
   },
   {
-    tier: "TIER 2",
-    label: "Data Engineering",
+    tier: "Data engineering",
+    label: "Pipelines and analytical stores",
     items: [
       "ETL pipeline design (SEC EDGAR, Spotify, Canvas APIs)",
       "Schema design and SQLite-backed analytics stores",
@@ -207,8 +207,8 @@ export const skillTiers = [
     ],
   },
   {
-    tier: "TIER 3",
-    label: "Analytics & SQL",
+    tier: "Analytics / SQL",
+    label: "Business logic and quality checks",
     items: [
       "SQLite, complex joins, aggregations, ranking, window functions",
       "Data quality checks and rejected-record handling",
@@ -217,8 +217,8 @@ export const skillTiers = [
     ],
   },
   {
-    tier: "TIER 4",
-    label: "BI & Communication",
+    tier: "BI / Communication",
+    label: "Dashboards and documentation",
     items: [
       "Streamlit, Plotly, Tableau, Power BI, Excel",
       "Executive dashboard design and export workflows",
