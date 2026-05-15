@@ -223,7 +223,7 @@ export const skillTiers = [
       "Streamlit, Plotly, Tableau, Power BI, Excel",
       "Executive dashboard design and export workflows",
       "READMEs, data dictionaries, methodology notes, validation docs",
-      "Interview-ready explanations",
+      "Reviewer-readable explanations",
     ],
   },
 ];
@@ -247,6 +247,6 @@ export const approachSteps = [
   {
     number: "04",
     title: "Explain the takeaway",
-    body: "State the assumptions, the limitations, and the recommendation. Validation docs and interview-ready explanations included.",
+    body: "State the assumptions, the limitations, and the recommendation. Validation docs and reviewer-readable explanations included.",
   },
 ];
