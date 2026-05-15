@@ -1,19 +1,21 @@
 ---
 const items = [
-  "Currently building — Job Market Skill Radar: structured skill extraction across internship postings.",
-  "Currently building — Decision Intelligence Lab: tightening pytest coverage and recommendation logic.",
-  "Currently learning — production RAG patterns and LLM eval harnesses.",
+  "Currently building — Job Application Automation v2: Slack notifications + recruiter CRM integration",
+  "Currently building — Decision Intelligence Lab: adding Monte Carlo scenario engine",
+  "Currently learning — production RAG patterns and eval harnesses",
 ];
 ---
 
 <div
   id="currently-building"
-  class="mx-auto mt-8 flex max-w-[72rem] items-center gap-3 px-6 sm:px-10"
+  class="mt-6 flex items-center gap-3"
+  aria-live="polite"
+  aria-atomic="true"
 >
   <span class="pulse-dot" aria-hidden="true"></span>
   <span
     id="currently-building-text"
-    class="font-mono text-xs text-text-dim transition-opacity duration-500"
+    class="font-mono text-xs text-text-muted transition-opacity duration-500"
     style="font-family: var(--font-mono);"
     data-items={JSON.stringify(items)}
   >
@@ -34,6 +36,9 @@ const items = [
       return;
     }
     if (!items.length) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
 
     let i = 0;
     let timer = null;
@@ -59,9 +64,6 @@ const items = [
         timer = null;
       }
     };
-
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
 
     if ("IntersectionObserver" in window) {
       const io = new IntersectionObserver((entries) => {

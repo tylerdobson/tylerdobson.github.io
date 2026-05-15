@@ -1,36 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  /* Surfaces — warm ivory, layered */
-  --color-bg: #faf6f0;
-  --color-bg-elev: #ffffff;
-  --color-bg-elev-2: #f2ece2;
-  --color-border: #e8dfd2;
-  --color-border-strong: #d4c8b5;
+  /* Surfaces — dark base (the canvas; warmth comes from the four moves) */
+  --color-bg: #0a0a0f;
+  --color-bg-elev: #12121a;
+  --color-bg-elev-2: #1a1a24;
+  --color-border: #1e1e2e;
+  --color-border-strong: #2a2a3e;
 
-  /* Text — warm near-black, not pure */
-  --color-text: #1f1813;
-  --color-text-dim: #5c5247;
-  --color-text-muted: #94897b;
+  /* Text */
+  --color-text: #e2e2e8;
+  --color-text-dim: #9999a8;
+  --color-text-muted: #55556b;
 
-  /* Accent — terracotta (attention / CTA) */
-  --color-accent: #c25a2a;
-  --color-accent-hover: #a84a1f;
-  --color-accent-dim: rgba(194, 90, 42, 0.1);
+  /* Accent — purple (CTAs, links, hover, one-word emphasis) */
+  --color-accent: #6c63ff;
+  --color-accent-hover: #8b83ff;
+  --color-accent-dim: rgba(108, 99, 255, 0.1);
 
-  /* Secondary accent — sage (liveness / success) */
-  --color-accent-2: #6b8e6f;
+  /* Success — sage (liveness, health, running systems — never CTAs) */
+  --color-success: #6b8e6f;
+  --color-success-dim: rgba(107, 142, 111, 0.15);
 
   /* Semantic */
-  --color-success: #6b8e6f;
-  --color-warning: #c99a2d;
-  --color-danger: #b85138;
+  --color-warning: #ffd93d;
+  --color-danger: #ff6b6b;
 
   /* Type */
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", "JetBrains Mono", monospace;
 
-  /* Sizing */
   --container-content: 72rem;
 }
 
@@ -62,7 +61,7 @@ body {
   border-top: 1px solid var(--color-border);
 }
 
-/* Hand-drawn underline used on accent words in the H1 */
+/* Hand-drawn underline on the H1 accent phrase — purple ink */
 .ink-underline {
   position: relative;
   white-space: nowrap;
@@ -74,40 +73,41 @@ body {
   right: -2%;
   bottom: -0.12em;
   height: 0.32em;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M2 7 Q 25 2, 50 6 T 100 6 T 150 7 T 198 5' fill='none' stroke='%23C25A2A' stroke-width='2.5' stroke-linecap='round' opacity='0.55'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M2 7 Q 25 2, 50 6 T 100 6 T 150 7 T 198 5' fill='none' stroke='%236C63FF' stroke-width='2.5' stroke-linecap='round' opacity='0.6'/></svg>");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   pointer-events: none;
 }
 
-/* Mouse-tracked radial accent — hero only, capped at 0.06 opacity.
-   The wrapper element sets --mx / --my via JS; this is the visual only. */
-.hero-mouse-glow {
+/* Move 1 — Mouse-tracked radial gradient, hero only, 0.08 inner stop max */
+.hero-glow {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background: radial-gradient(
     600px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(194, 90, 42, 0.06),
+    rgba(108, 99, 255, 0.08),
     transparent 40%
   );
   opacity: 0;
-  transition: opacity 400ms ease-out;
+  transition:
+    background 0.1s ease-out,
+    opacity 0.4s ease-out;
 }
 @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .hero-mouse-glow.active {
+  .hero-glow.active {
     opacity: 1;
   }
 }
 
-/* Live "currently building" pulsing dot */
+/* Move 4 helper — pulsing sage dot for "Live system" badge and Currently building */
 .pulse-dot {
   display: inline-block;
   width: 0.55rem;
   height: 0.55rem;
   border-radius: 9999px;
-  background: var(--color-accent-2);
-  box-shadow: 0 0 0 0 rgba(107, 142, 111, 0.45);
+  background: var(--color-success);
+  box-shadow: 0 0 0 0 var(--color-success-dim);
   animation: pulseDot 2.4s ease-out infinite;
 }
 @keyframes pulseDot {
@@ -122,16 +122,15 @@ body {
   }
 }
 
-/* Flagship card hover — soft outer glow instead of fake-glass on ivory */
+/* Move 3 — Flagship card premium glow on hover */
 .flagship-card {
   transition:
     border-color 0.25s ease-out,
-    box-shadow 0.35s ease-out,
-    transform 0.35s ease-out;
+    box-shadow 0.35s ease-out;
 }
 .flagship-card:hover {
   border-color: var(--color-border-strong);
-  box-shadow: 0 0 60px -20px rgba(194, 90, 42, 0.25);
+  box-shadow: 0 0 60px -20px rgba(108, 99, 255, 0.25);
 }
 
 /* Architecture diagram animations */

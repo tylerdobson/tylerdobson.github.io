@@ -1,0 +1,410 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import SectionLabel from "../components/SectionLabel.astro";
+
+const title = "Résumé — Tyler Dobson";
+const description =
+  "Résumé for Tyler Dobson — Data, AI & ML Engineer. Junior at the University of South Florida. Available Summer and Fall 2026 internships.";
+
+let pdfAvailable = false;
+try {
+  const resumeUrl = new URL("../../public/resume.pdf", import.meta.url);
+  const fs = await import("node:fs");
+  pdfAvailable = fs.existsSync(resumeUrl);
+} catch {
+  pdfAvailable = false;
+}
+
+const stackGroups = [
+  ["Languages", "Python · SQL · R · JavaScript · HTML/CSS · Java"],
+  [
+    "Data & Analytics",
+    "pandas · ETL pipelines · data cleaning · data validation · KPI design · exploratory data analysis",
+  ],
+  ["BI & Visualization", "Tableau · Power BI · Streamlit · Plotly · Excel"],
+  ["Databases", "SQLite · warehouse-style schemas · joins · aggregations · reusable views"],
+  [
+    "AI & Automation",
+    "Claude Code · Codex · Cursor · Anthropic Console · LLM tool orchestration · prompt engineering · validation loops · human-in-the-loop review · n8n · Zapier · Glean · Obsidian",
+  ],
+  [
+    "Tools & Workflow",
+    "Git · GitHub (branching, draft PRs, merge strategies) · VS Code · PowerShell · pytest · unittest · Markdown · README-driven documentation",
+  ],
+];
+
+const projects = [
+  {
+    title: "Decision Intelligence Lab",
+    stack: "Python, pandas, pytest",
+    bullets: [
+      "Engineered modular KPI, forecasting, scenario-analysis, and recommendation engines using a 1,728-record dataset to answer defined business questions.",
+      "Built pytest coverage across analysis modules to improve reproducibility, catch regressions, and support reliable iteration.",
+      "Structured outputs around decision-making use cases including trend analysis, scenario comparison, and recommendation logic.",
+    ],
+  },
+  {
+    title: "Airbnb Market Intelligence Dashboard",
+    stack: "Python, SQL, SQLite, Streamlit",
+    bullets: [
+      "Analyzed 1,631 listings to surface pricing, occupancy, licensing, and revenue patterns across the market.",
+      "Quantified $179.46 average nightly rate, approximately $37.66M in revenue proxy, and 58.98% licensed inventory share.",
+      "Built an interactive Streamlit dashboard backed by a SQLite analytical warehouse with reusable views for repeatable reporting.",
+    ],
+  },
+  {
+    title: "Tableau Forecasting & Discount Analysis",
+    stack: "Tableau",
+    bullets: [
+      "Analyzed $2.30M in sales (+13.6% YoY) across regions, customer segments, and product categories at a 12.4% margin.",
+      "Built Tableau dashboards isolating discount impact on profitability and surfacing performance drivers by region and segment.",
+      "Produced a forecast projecting approximately $415K in profit to support business planning and performance review.",
+    ],
+  },
+  {
+    title: "SEC Financial Statement ETL Pipeline",
+    stack: "Python, ETL",
+    bullets: [
+      "Built an end-to-end ETL pipeline ingesting SEC EDGAR filings into structured balance sheet, income statement, and cash flow tables.",
+      "Designed reproducible transformations with explicit schemas and documented assumptions for downstream financial analysis.",
+    ],
+  },
+  {
+    title: "SQL Retail Revenue & Labor Market Analysis",
+    stack: "SQL, SQLite",
+    bullets: [
+      "Authored warehouse-style schemas, reusable SQL views, and analytical queries for revenue, customer, and segment trend analysis.",
+      "Built a parallel labor-market intelligence project analyzing affordability and income trends using reusable query patterns.",
+    ],
+  },
+  {
+    title: "Job Market Skill Radar (private; in active development)",
+    stack: "Python (stdlib), unittest",
+    bullets: [
+      "Sanitized 17-posting internship pilot corpus, extracted skill signals, and mapped them to category and role-family summary CSVs.",
+      "Generated Markdown evidence-gap reports linking required skills to existing portfolio artifacts.",
+      "24 passing unit tests with banned-language guard for output discipline; MIT licensed.",
+    ],
+  },
+];
+
+const certifications = [
+  ["Programming with Python Professional Certificate", "OpenEDG Python Institute · May 2026"],
+  ["Career Essentials in Data Analysis", "Microsoft & LinkedIn · Apr 2026"],
+  ["Career Essentials in GitHub Professional Certificate", "GitHub · Apr 2026"],
+];
+
+const experience = [
+  {
+    role: "Bar Back",
+    employer: "Oak View Group",
+    location: "Tampa, FL",
+    dates: "Part-Time · Jan 2026 – Present",
+    bullets: [
+      "Support inventory and beverage operations during large-scale events with 15,000–20,000+ attendees.",
+      "Organize, track, and restock tens of thousands of products across multiple service areas under time-sensitive conditions.",
+      "Coordinate product movement and operational support during peak-volume periods to maintain service flow.",
+    ],
+  },
+  {
+    role: "Bartender",
+    employer: "Legends Global",
+    location: "Philadelphia, PA",
+    dates: "Part-Time · May 2024 – Present",
+    bullets: [
+      "Deliver beverage service during large-scale events with attendance approaching 20,000 while maintaining speed, accuracy, and guest experience.",
+      "Process 200+ transactions per shift across Clover, Toast, and Micros POS systems with accurate cash and card handling.",
+      "Coordinate with team members during peak-volume periods to keep workflow organized and guest communication clear.",
+    ],
+  },
+];
+
+const leadership = [
+  {
+    primary: "Social Resources Chair",
+    secondary: "Alpha Epsilon Pi Fraternity (Psi Phi)",
+    meta: "Nov 2025 – Present",
+    bullet:
+      "Coordinate event logistics, resource planning, vendor communication, and executive board updates under budget and compliance constraints.",
+  },
+  {
+    primary: "National Society of Leadership and Success (NSLS)",
+    secondary: null,
+    meta: "Sep 2024 – Present",
+    bullet:
+      "Completed leadership development covering communication, accountability, team development, and public speaking.",
+  },
+  {
+    primary: "Future Business Leaders of America",
+    secondary: "USF Chapter",
+    meta: "Member · Current",
+    bullet:
+      "Participate in chapter programming covering business leadership, career-readiness, and professional networking with peers across business, analytics, finance, and information systems.",
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Nav />
+
+  <main class="px-6 sm:px-10">
+    <div class="mx-auto max-w-[72rem] py-16 sm:py-20">
+      <SectionLabel number="00" label="Résumé" />
+
+      <div class="mt-4 flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <h1
+            class="font-light tracking-tight text-text"
+            style="font-size: clamp(2rem, 5vw, 3.5rem);"
+          >
+            Tyler Dobson
+          </h1>
+          <p class="mt-2 text-text-dim">
+            Data, AI &amp; ML Engineer · Tampa, FL · Available Summer &amp; Fall 2026
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          {
+            pdfAvailable ? (
+              <a
+                href="/resume.pdf"
+                class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-white hover:bg-accent-hover transition-all duration-200 ease-out"
+              >
+                Download PDF <span aria-hidden="true">↓</span>
+              </a>
+            ) : (
+              <span
+                class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text-muted"
+              >
+                PDF coming soon
+              </span>
+            )
+          }
+          <a
+            href="/"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+          >
+            <span aria-hidden="true">←</span> Back to portfolio
+          </a>
+        </div>
+      </div>
+
+      {
+        pdfAvailable && (
+          <div class="mt-10 hidden overflow-hidden rounded-xl border border-border-strong bg-bg-elev md:block">
+            <object
+              data="/resume.pdf#view=FitH"
+              type="application/pdf"
+              width="100%"
+              height="900"
+              aria-label="Tyler Dobson résumé PDF"
+            >
+              <p class="p-6 text-sm text-text-dim">
+                Your browser can't preview PDFs inline.{" "}
+                <a href="/resume.pdf" class="text-accent hover:underline">
+                  Download it instead
+                </a>
+                .
+              </p>
+            </object>
+          </div>
+        )
+      }
+
+      <div class="mt-12 space-y-12">
+        <section>
+          <p
+            class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+            style="font-family: var(--font-mono);"
+          >
+            Contact
+          </p>
+          <p class="mt-2 text-sm leading-relaxed text-text-dim">
+            Tampa, FL · 215-821-0071 · tydobson41@gmail.com · tylerdobson@usf.edu
+          </p>
+          <p class="text-sm leading-relaxed text-text-dim">
+            linkedin.com/in/tylerdobson · github.com/tylerdobson · tylerdobson.github.io
+          </p>
+        </section>
+
+        <section>
+          <p
+            class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+            style="font-family: var(--font-mono);"
+          >
+            Professional summary
+          </p>
+          <p class="mt-3 text-base leading-relaxed text-text-dim">
+            Artificial Intelligence, Business Analytics &amp; Information Systems student at the
+            University of South Florida targeting Summer and Fall 2026 internships across Data
+            Engineering, AI Engineering, Machine Learning, Data Analytics, Business
+            Intelligence, Information Systems, and AI Automation. Built 12+ end-to-end portfolio
+            projects spanning Python, SQL, Tableau, Streamlit, SQLite, reproducible ETL, and
+            AI-assisted workflow systems. Quantified independent work includes a $2.30M sales
+            forecasting analysis, a 1,631-listing market intelligence dashboard, a SEC EDGAR
+            financial-statement pipeline, and a decision-intelligence platform that runs KPI,
+            forecasting, scenario-analysis, and recommendation engines against a 1,728-record
+            dataset under pytest coverage.
+          </p>
+        </section>
+
+        <section>
+          <p
+            class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+            style="font-family: var(--font-mono);"
+          >
+            Education
+          </p>
+          <p class="mt-3 text-base font-medium text-text">University of South Florida — Tampa, FL</p>
+          <p class="text-sm text-text-dim">
+            B.S. in Artificial Intelligence, Business Analytics &amp; Information Systems
+          </p>
+          <p
+            class="mt-1 font-mono text-xs text-text-muted"
+            style="font-family: var(--font-mono);"
+          >
+            Expected Graduation: May 2027
+          </p>
+          <p class="mt-3 text-sm leading-relaxed text-text-dim">
+            <span class="text-text">Relevant coursework:</span> Business Analytics, Information
+            Systems, Data Analysis, SQL &amp; Databases, Programming Fundamentals (Python, Java),
+            Statistics.
+          </p>
+        </section>
+
+        <section>
+          <p
+            class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+            style="font-family: var(--font-mono);"
+          >
+            Technical skills
+          </p>
+          <ul class="mt-3 space-y-2">
+            {
+              stackGroups.map(([label, body]) => (
+                <li class="text-sm leading-relaxed">
+                  <span class="font-medium text-text">{label}:</span>{" "}
+                  <span class="text-text-dim">{body}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section>
+          <p
+            class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+            style="font-family: var(--font-mono);"
+          >
+            Projects
+          </p>
+          <div class="mt-3 space-y-6">
+            {
+              projects.map((p) => (
+                <div>
+                  <div class="text-base font-medium text-text">
+                    {p.title}{" "}
+                    <span class="text-text-dim">
+                      — <em class="not-italic text-text-dim">{p.stack}</em>
+                    </span>
+                  </div>
+                  <ul class="mt-2 space-y-1">
+                    {p.bullets.map((b) => (
+                      <li class="flex gap-3 text-sm leading-relaxed text-text-dim">
+                        <span class="select-none text-accent" aria-hidden="true">·</span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+
+        <section>
+          <p
+            class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+            style="font-family: var(--font-mono);"
+          >
+            Certifications
+          </p>
+          <ul class="mt-3 space-y-2">
+            {
+              certifications.map(([title, issuer]) => (
+                <li class="flex gap-3 text-sm leading-relaxed">
+                  <span class="select-none text-accent" aria-hidden="true">·</span>
+                  <span>
+                    <span class="text-text">{title}</span>{" "}
+                    <span class="text-text-dim">— {issuer}</span>
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section>
+          <p
+            class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+            style="font-family: var(--font-mono);"
+          >
+            Experience
+          </p>
+          <div class="mt-3 space-y-6">
+            {
+              experience.map((e) => (
+                <div>
+                  <div class="text-base font-medium text-text">
+                    {e.role}, {e.employer}{" "}
+                    <span class="text-text-dim">
+                      — <em class="not-italic text-text-dim">{e.location} · {e.dates}</em>
+                    </span>
+                  </div>
+                  <ul class="mt-2 space-y-1">
+                    {e.bullets.map((b) => (
+                      <li class="flex gap-3 text-sm leading-relaxed text-text-dim">
+                        <span class="select-none text-accent" aria-hidden="true">·</span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+
+        <section>
+          <p
+            class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+            style="font-family: var(--font-mono);"
+          >
+            Leadership
+          </p>
+          <div class="mt-3 space-y-5">
+            {
+              leadership.map((l) => (
+                <div>
+                  <div class="text-base font-medium text-text">
+                    {l.primary}
+                    {l.secondary && <span class="text-text-dim">, {l.secondary}</span>}{" "}
+                    <span class="text-text-dim">
+                      — <em class="not-italic text-text-dim">{l.meta}</em>
+                    </span>
+                  </div>
+                  <p class="mt-1 text-sm leading-relaxed text-text-dim">{l.bullet}</p>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

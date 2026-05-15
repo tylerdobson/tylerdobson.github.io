@@ -1,0 +1,173 @@
+---
+import SectionLabel from "./SectionLabel.astro";
+
+const education = {
+  school: "University of South Florida",
+  degree: "B.S. Artificial Intelligence, Business Analytics & Information Systems",
+  grad: "Expected May 2027",
+  certifications: [
+    "Programming with Python — OpenEDG Python Institute (May 2026)",
+    "Career Essentials in Data Analysis — Microsoft & LinkedIn (Apr 2026)",
+    "Career Essentials in GitHub — GitHub (Apr 2026)",
+  ],
+};
+
+const quantifiedProjects = [
+  {
+    name: "Tableau Forecasting Study",
+    detail: "$2.30M sales (+13.6% YoY) · 12.4% margin · ~$415K projected profit",
+  },
+  {
+    name: "Airbnb Market Intelligence",
+    detail: "1,631 listings · $179.46 avg nightly · $37.66M revenue proxy",
+  },
+  {
+    name: "Decision Intelligence Lab",
+    detail: "1,728 records · KPI, forecasting, scenario engines · pytest coverage",
+  },
+  {
+    name: "Job Market Skill Radar (private)",
+    detail: "17-posting pilot corpus · 24 passing unit tests · MIT licensed",
+  },
+];
+
+const stackGroups = [
+  {
+    label: "Data & Analytics",
+    items: "Python · pandas · SQL · SQLite · R · Excel",
+  },
+  {
+    label: "BI & Visualization",
+    items: "Tableau · Power BI · Streamlit · Plotly",
+  },
+  {
+    label: "AI & Automation",
+    items: "Claude · Cursor · Anthropic Console · Zapier · n8n · Glean · Obsidian",
+  },
+  {
+    label: "Workflow",
+    items: "Git/GitHub · VS Code · pytest · unittest · Markdown",
+  },
+];
+---
+
+<section class="px-6 py-20 sm:px-10 sm:py-24">
+  <div class="mx-auto max-w-[72rem]">
+    <SectionLabel number="03" label="Résumé highlights" />
+    <h2
+      class="mt-3 max-w-3xl font-light tracking-tight text-text"
+      style="font-size: clamp(1.75rem, 3vw, 2.5rem);"
+    >
+      Education, quantified work, and the stack — at a glance.
+    </h2>
+
+    <div class="mt-10 grid gap-4 lg:grid-cols-3">
+      <div
+        class="rounded-xl border border-border bg-bg-elev p-6 transition-colors hover:border-border-strong"
+      >
+        <p
+          class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+          style="font-family: var(--font-mono);"
+        >
+          Education
+        </p>
+        <h3 class="mt-1 text-lg font-medium text-text">{education.school}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-text-dim">{education.degree}</p>
+        <p
+          class="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-text-muted"
+          style="font-family: var(--font-mono);"
+        >
+          {education.grad}
+        </p>
+
+        <p
+          class="mt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-text-muted"
+          style="font-family: var(--font-mono);"
+        >
+          Certifications
+        </p>
+        <ul class="mt-2 space-y-2">
+          {
+            education.certifications.map((c) => (
+              <li class="flex gap-3 text-sm leading-relaxed text-text-dim">
+                <span class="select-none text-accent" aria-hidden="true">·</span>
+                <span>{c}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div
+        class="rounded-xl border border-border bg-bg-elev p-6 transition-colors hover:border-border-strong"
+      >
+        <p
+          class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+          style="font-family: var(--font-mono);"
+        >
+          Recent projects
+        </p>
+        <h3 class="mt-1 text-lg font-medium text-text">Quantified work</h3>
+
+        <ul class="mt-4 space-y-4">
+          {
+            quantifiedProjects.map((p) => (
+              <li>
+                <div class="text-sm font-medium text-text">{p.name}</div>
+                <div
+                  class="mt-1 font-mono text-[11px] leading-relaxed text-text-dim"
+                  style="font-family: var(--font-mono);"
+                >
+                  {p.detail}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div
+        class="rounded-xl border border-border bg-bg-elev p-6 transition-colors hover:border-border-strong"
+      >
+        <p
+          class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+          style="font-family: var(--font-mono);"
+        >
+          Core stack
+        </p>
+        <h3 class="mt-1 text-lg font-medium text-text">Tools I reach for</h3>
+
+        <div class="mt-4 space-y-4">
+          {
+            stackGroups.map((g) => (
+              <div>
+                <p
+                  class="font-mono text-[10px] uppercase tracking-[0.14em] text-text-muted"
+                  style="font-family: var(--font-mono);"
+                >
+                  {g.label}
+                </p>
+                <p class="mt-1 text-sm leading-relaxed text-text-dim">{g.items}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 flex flex-wrap items-center gap-3">
+      <a
+        href="/resume/"
+        class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-white hover:bg-accent-hover transition-all duration-200 ease-out"
+      >
+        Full résumé <span aria-hidden="true">→</span>
+      </a>
+      <a
+        href="/resume.pdf"
+        class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+      >
+        Download PDF <span aria-hidden="true">↓</span>
+      </a>
+    </div>
+  </div>
+</section>

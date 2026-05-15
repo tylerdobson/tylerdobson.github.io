@@ -2,9 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
-import CurrentlyBuilding from "../components/CurrentlyBuilding.astro";
 import About from "../components/About.astro";
 import FlagshipCard from "../components/FlagshipCard.astro";
+import ResumeHighlights from "../components/ResumeHighlights.astro";
 import SectionLabel from "../components/SectionLabel.astro";
 import CaseStudySection from "../components/CaseStudySection.astro";
 import ProjectCard from "../components/ProjectCard.astro";
@@ -21,7 +21,7 @@ import {
 
 const title = "Tyler Dobson — Data, AI & ML Engineer";
 const description =
-  "Junior at the University of South Florida building AI-powered systems that turn manual workflows into automated infrastructure. Available Summer 2026 and Fall 2026 for Data, AI, and ML Engineering internships.";
+  "Junior at the University of South Florida building AI-powered systems that turn manual workflows into automated infrastructure. Available Summer and Fall 2026 for Data, AI, and ML Engineering internships.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -29,9 +29,8 @@ const description =
 
   <main>
     <Hero />
-    <CurrentlyBuilding />
 
-    <div class="hairline-divider mt-12"></div>
+    <div class="hairline-divider"></div>
 
     <About />
 
@@ -39,16 +38,20 @@ const description =
 
     <section class="px-6 pt-16 sm:px-10">
       <div class="mx-auto max-w-[72rem]">
-        <SectionLabel number="01" label="Flagship project" />
+        <SectionLabel number="02" label="Flagship project" />
       </div>
     </section>
     <FlagshipCard />
 
     <div class="hairline-divider"></div>
 
+    <ResumeHighlights />
+
+    <div class="hairline-divider"></div>
+
     <section id="case-studies" class="px-6 py-20 sm:px-10 sm:py-24">
       <div class="mx-auto max-w-[72rem]">
-        <SectionLabel number="02" label="Case studies" />
+        <SectionLabel number="04" label="Case studies" />
         <h2
           class="mt-3 max-w-3xl font-light tracking-tight text-text"
           style="font-size: clamp(1.75rem, 3vw, 2.5rem);"
@@ -66,7 +69,7 @@ const description =
 
     <section class="px-6 py-20 sm:px-10 sm:py-24">
       <div class="mx-auto max-w-[72rem]">
-        <SectionLabel number="03" label="More work" />
+        <SectionLabel number="05" label="More work" />
         <h2
           class="mt-3 max-w-3xl font-light tracking-tight text-text"
           style="font-size: clamp(1.75rem, 3vw, 2.5rem);"
@@ -84,17 +87,20 @@ const description =
 
     <section id="approach" class="px-6 py-20 sm:px-10 sm:py-24">
       <div class="mx-auto max-w-[72rem]">
-        <SectionLabel number="04" label="Approach" />
+        <SectionLabel number="06" label="Approach" />
         <h2
           class="mt-3 max-w-3xl font-light tracking-tight text-text"
           style="font-size: clamp(1.75rem, 3vw, 2.5rem);"
         >
           Systems thinking, packaged for review.
         </h2>
-        <p class="mt-5 max-w-3xl text-base leading-relaxed text-text-dim">
-          Every project I ship starts with the same question: what's the actual workflow this
-          needs to fit into? Then I work backwards — clean data, tested logic, usable interfaces,
-          and documentation that explains both decisions and limits.
+        <p
+          class="mt-5 max-w-3xl font-mono text-sm italic leading-relaxed text-text-dim"
+          style="font-family: var(--font-mono);"
+        >
+          “Lead with a business question — not a tool or a dataset. Document assumptions
+          explicitly. Sanitize inputs. Write a real README. Practice evidence discipline — no
+          claim of ‘completed’ or ‘production-grade’ without an artifact behind it.”
         </p>
 
         <div class="mt-10 grid gap-4 sm:grid-cols-2">
@@ -111,7 +117,7 @@ const description =
 
     <section class="px-6 py-20 sm:px-10 sm:py-24">
       <div class="mx-auto max-w-[72rem]">
-        <SectionLabel number="05" label="Skills" />
+        <SectionLabel number="07" label="Skills" />
         <h2
           class="mt-3 max-w-3xl font-light tracking-tight text-text"
           style="font-size: clamp(1.75rem, 3vw, 2.5rem);"
@@ -133,7 +139,7 @@ const description =
 
     <section id="contact" class="px-6 py-20 sm:px-10 sm:py-24">
       <div class="mx-auto max-w-[72rem]">
-        <SectionLabel number="06" label="Contact" />
+        <SectionLabel number="08" label="Contact" />
         <h2
           class="mt-3 max-w-3xl font-light tracking-tight text-text"
           style="font-size: clamp(1.75rem, 3vw, 2.5rem);"
@@ -141,9 +147,11 @@ const description =
           Open to internship conversations.
         </h2>
         <p class="mt-5 max-w-3xl text-base leading-relaxed text-text-dim">
-          Looking for Summer 2026 and Fall 2026 internships in Data Engineering, AI Engineering,
-          Machine Learning, Data Science, and Analytics where I can ship real systems.
-          Comfortable on small teams, comfortable with ambiguity, comfortable in production.
+          Looking for Summer and Fall 2026 internships in Data Engineering, AI Engineering,
+          Machine Learning, Data Analytics, Business Intelligence, Information Systems, and AI
+          Automation. Particularly interested in applying analytics to operations, performance
+          analysis, and process optimization. Comfortable on small teams, comfortable with
+          ambiguity, comfortable shipping real systems.
         </p>
 
         <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -157,7 +165,7 @@ const description =
             href="https://www.linkedin.com/in/tylerdobson"
             target="_blank"
             rel="noopener"
-            class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-bg-elev px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
           >
             LinkedIn <span aria-hidden="true">↗</span>
           </a>
@@ -165,15 +173,21 @@ const description =
             href="https://github.com/tylerdobson"
             target="_blank"
             rel="noopener"
-            class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-bg-elev px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
           >
             GitHub <span aria-hidden="true">↗</span>
           </a>
           <a
-            href="/resume.pdf"
-            class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-bg-elev px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+            href="/resume/"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
           >
-            Download résumé
+            View résumé <span aria-hidden="true">↗</span>
+          </a>
+          <a
+            href="/resume.pdf"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+          >
+            Download PDF <span aria-hidden="true">↓</span>
           </a>
         </div>
       </div>

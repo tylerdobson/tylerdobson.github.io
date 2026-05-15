@@ -1,9 +1,10 @@
 ---
 import ArchitectureDiagram from "./ArchitectureDiagram.astro";
+import CurrentlyBuilding from "./CurrentlyBuilding.astro";
 ---
 
 <section id="hero" class="relative overflow-hidden px-6 pt-12 pb-20 sm:px-10 sm:pt-16 sm:pb-28">
-  <div id="hero-glow" class="hero-mouse-glow"></div>
+  <div id="hero-glow" class="hero-glow" aria-hidden="true"></div>
 
   <div class="relative mx-auto max-w-[72rem]">
     <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
@@ -12,7 +13,7 @@ import ArchitectureDiagram from "./ArchitectureDiagram.astro";
           class="font-mono text-xs uppercase tracking-[0.12em] text-accent"
           style="font-family: var(--font-mono);"
         >
-          Data · AI · ML Engineering
+          Available for Summer &amp; Fall 2026 internships
         </p>
 
         <h1
@@ -24,28 +25,28 @@ import ArchitectureDiagram from "./ArchitectureDiagram.astro";
         </h1>
 
         <p class="mt-6 max-w-2xl text-base leading-relaxed text-text-dim sm:text-lg">
-          Junior at the University of South Florida studying Artificial Intelligence, Analytics
-          & Information Systems. Available <span class="text-text">Summer 2026</span> and
-          <span class="text-text">Fall 2026</span> for Data, AI, and ML Engineering internships —
-          also open to Data Science, Business Analytics, and Analyst roles.
+          Junior at the University of South Florida studying Artificial Intelligence, Business
+          Analytics &amp; Information Systems. Available <span class="text-text">Summer and Fall
+          2026</span> for Data Engineering, AI Engineering, and Machine Learning internships —
+          also open to Data Analytics, BI, Information Systems, and AI Automation roles.
         </p>
 
         <div class="mt-8 flex flex-wrap items-center gap-3">
           <a
             href="#flagship"
-            class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-white shadow-[0_1px_2px_rgba(194,90,42,0.25)] hover:bg-accent-hover transition-all duration-200 ease-out"
+            class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-white shadow-[0_1px_2px_rgba(108,99,255,0.4)] hover:bg-accent-hover transition-all duration-200 ease-out"
           >
             See the flagship project <span aria-hidden="true">→</span>
           </a>
           <a
-            href="/resume.pdf"
-            class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-bg-elev px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+            href="/resume/"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
           >
             Résumé <span aria-hidden="true">↗</span>
           </a>
           <a
             href="mailto:tydobson41@gmail.com"
-            class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-bg-elev px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
           >
             Email Tyler
           </a>
@@ -53,7 +54,7 @@ import ArchitectureDiagram from "./ArchitectureDiagram.astro";
             href="https://www.linkedin.com/in/tylerdobson"
             target="_blank"
             rel="noopener"
-            class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-bg-elev px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
           >
             LinkedIn <span aria-hidden="true">↗</span>
           </a>
@@ -61,11 +62,13 @@ import ArchitectureDiagram from "./ArchitectureDiagram.astro";
             href="https://github.com/tylerdobson"
             target="_blank"
             rel="noopener"
-            class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-bg-elev px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
           >
             GitHub <span aria-hidden="true">↗</span>
           </a>
         </div>
+
+        <CurrentlyBuilding />
       </div>
 
       <div class="lg:justify-self-end w-full max-w-xl lg:max-w-none">

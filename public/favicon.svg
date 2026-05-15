@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#FAF6F0"/>
-  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#C25A2A" stroke-width="1.5"/>
+  <rect width="64" height="64" rx="14" fill="#0A0A0F"/>
+  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#6C63FF" stroke-width="1.5"/>
   <text
     x="32"
     y="42"
@@ -8,7 +8,7 @@
     font-family="'IBM Plex Mono', monospace"
     font-size="26"
     font-weight="500"
-    fill="#C25A2A"
+    fill="#6C63FF"
     letter-spacing="0.05em"
   >TD</text>
 </svg>
