@@ -1,0 +1,69 @@
+---
+import SectionLabel from "./SectionLabel.astro";
+---
+
+<section id="about" class="px-6 py-20 sm:px-10 sm:py-24">
+  <div class="mx-auto max-w-[72rem]">
+    <SectionLabel number="00" label="About" />
+
+    <div class="mt-10 grid items-start gap-10 md:grid-cols-[240px_1fr]">
+      <div class="relative">
+        <div
+          class="overflow-hidden rounded-xl border border-border-strong bg-bg-elev-2 shadow-[0_8px_30px_-12px_rgba(31,24,19,0.18)]"
+          style="transform: rotate(-1deg);"
+        >
+          <picture>
+            <source srcset="/avatar.jpg" type="image/jpeg" />
+            <img
+              src="/avatar.svg"
+              alt="Tyler Dobson"
+              width="240"
+              height="240"
+              loading="lazy"
+              class="block h-auto w-full"
+            />
+          </picture>
+        </div>
+      </div>
+
+      <div>
+        <h2
+          class="font-light tracking-tight text-text"
+          style="font-size: clamp(1.75rem, 3vw, 2.5rem);"
+        >
+          Hi, I'm Tyler.
+        </h2>
+
+        <p class="mt-5 text-base leading-relaxed text-text-dim sm:text-lg">
+          I'm an undergraduate at the University of South Florida studying Artificial
+          Intelligence, Analytics & Information Systems. I build practical AI-powered systems —
+          the kind that turn manual workflows into infrastructure that actually runs. My current
+          flagship is a multi-agent job application automation system that's running my own
+          search on autopilot.
+        </p>
+
+        <p class="mt-4 text-base leading-relaxed text-text-dim sm:text-lg">
+          Outside the codebase, I work part-time in event operations with Oak View Group and
+          Legends Global, supporting 15,000–20,000+ attendee events across Tampa and
+          Philadelphia. It's where I learned that high-pressure execution and clean systems are
+          the same skill in different clothes.
+        </p>
+
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a
+            href="/resume.pdf"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-bg-elev px-4 py-2 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+          >
+            View résumé <span aria-hidden="true">↗</span>
+          </a>
+          <a
+            href="#flagship"
+            class="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-text-dim hover:text-accent transition-colors"
+          >
+            See the flagship project <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

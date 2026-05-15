@@ -6,11 +6,17 @@ const project = flagshipProject;
 
 <section id="flagship" class="px-6 py-20 sm:px-10 sm:py-24">
   <div class="mx-auto max-w-[72rem]">
-    <div
-      class="rounded-xl border border-border bg-bg-elev p-8 sm:p-12 transition-colors hover:border-border-strong"
-    >
+    <div class="flagship-card relative rounded-xl border border-border-strong bg-bg-elev p-8 sm:p-12">
+      <div
+        class="absolute right-6 top-6 flex items-center gap-2 rounded-full border border-border bg-white/70 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-text-muted backdrop-blur sm:right-8 sm:top-8"
+        style="font-family: var(--font-mono);"
+      >
+        <span class="pulse-dot" aria-hidden="true"></span>
+        Live system
+      </div>
+
       <h2
-        class="font-light tracking-tight text-text"
+        class="max-w-3xl font-light tracking-tight text-text"
         style="font-size: clamp(1.75rem, 3vw, 2.5rem);"
       >
         {project.title}
@@ -29,7 +35,8 @@ const project = flagshipProject;
           project.stats.map((stat) => (
             <div class="border-l border-border-strong pl-4">
               <div
-                class="text-3xl font-light text-text"
+                class="text-3xl font-light text-text count-up"
+                data-target={stat.value}
                 style="font-family: var(--font-sans);"
               >
                 {stat.value}
@@ -63,7 +70,7 @@ const project = flagshipProject;
           href={project.repoHref}
           target="_blank"
           rel="noopener"
-          class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+          class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-bg-elev px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
         >
           View repo <span aria-hidden="true">↗</span>
         </a>
@@ -71,3 +78,43 @@ const project = flagshipProject;
     </div>
   </div>
 </section>
+
+<script is:inline>
+  (function () {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced || !("IntersectionObserver" in window)) return;
+
+    const nodes = document.querySelectorAll(".count-up");
+    if (!nodes.length) return;
+
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+    const DURATION_MS = 1100;
+
+    const animate = (el) => {
+      const targetText = (el.dataset.target || el.textContent || "").trim();
+      const target = parseInt(targetText, 10);
+      if (Number.isNaN(target)) return;
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / DURATION_MS);
+        const v = Math.round(target * easeOut(t));
+        el.textContent = String(v);
+        if (t < 1) requestAnimationFrame(tick);
+        else el.textContent = String(target);
+      };
+      el.textContent = "0";
+      requestAnimationFrame(tick);
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    nodes.forEach((n) => io.observe(n));
+  })();
+</script>

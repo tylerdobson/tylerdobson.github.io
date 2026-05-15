@@ -2,6 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
+import CurrentlyBuilding from "../components/CurrentlyBuilding.astro";
+import About from "../components/About.astro";
 import FlagshipCard from "../components/FlagshipCard.astro";
 import SectionLabel from "../components/SectionLabel.astro";
 import CaseStudySection from "../components/CaseStudySection.astro";
@@ -17,9 +19,9 @@ import {
   skillTiers,
 } from "../content/projects.ts";
 
-const title = "Tyler Dobson — AI & Data Engineer";
+const title = "Tyler Dobson — Data, AI & ML Engineer";
 const description =
-  "Junior at the University of South Florida building AI-powered systems that turn manual workflows into automated infrastructure. Available for Summer 2026 Data Engineering, AI Engineering, and Machine Learning internships.";
+  "Junior at the University of South Florida building AI-powered systems that turn manual workflows into automated infrastructure. Available Summer 2026 and Fall 2026 for Data, AI, and ML Engineering internships.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -27,6 +29,11 @@ const description =
 
   <main>
     <Hero />
+    <CurrentlyBuilding />
+
+    <div class="hairline-divider mt-12"></div>
+
+    <About />
 
     <div class="hairline-divider"></div>
 
@@ -134,9 +141,9 @@ const description =
           Open to internship conversations.
         </h2>
         <p class="mt-5 max-w-3xl text-base leading-relaxed text-text-dim">
-          Looking for Data Engineering, AI Engineering, Machine Learning, Data Science, and
-          Analytics internships where I can ship real systems. Comfortable on small teams,
-          comfortable with ambiguity, comfortable in production.
+          Looking for Summer 2026 and Fall 2026 internships in Data Engineering, AI Engineering,
+          Machine Learning, Data Science, and Analytics where I can ship real systems.
+          Comfortable on small teams, comfortable with ambiguity, comfortable in production.
         </p>
 
         <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -150,7 +157,7 @@ const description =
             href="https://www.linkedin.com/in/tylerdobson"
             target="_blank"
             rel="noopener"
-            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-bg-elev px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
           >
             LinkedIn <span aria-hidden="true">↗</span>
           </a>
@@ -158,13 +165,13 @@ const description =
             href="https://github.com/tylerdobson"
             target="_blank"
             rel="noopener"
-            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-bg-elev px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
           >
             GitHub <span aria-hidden="true">↗</span>
           </a>
           <a
             href="/resume.pdf"
-            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-bg-elev px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
           >
             Download résumé
           </a>

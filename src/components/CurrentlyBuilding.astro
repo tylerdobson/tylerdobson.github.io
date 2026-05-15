@@ -1,0 +1,84 @@
+---
+const items = [
+  "Currently building — Job Market Skill Radar: structured skill extraction across internship postings.",
+  "Currently building — Decision Intelligence Lab: tightening pytest coverage and recommendation logic.",
+  "Currently learning — production RAG patterns and LLM eval harnesses.",
+];
+---
+
+<div
+  id="currently-building"
+  class="mx-auto mt-8 flex max-w-[72rem] items-center gap-3 px-6 sm:px-10"
+>
+  <span class="pulse-dot" aria-hidden="true"></span>
+  <span
+    id="currently-building-text"
+    class="font-mono text-xs text-text-dim transition-opacity duration-500"
+    style="font-family: var(--font-mono);"
+    data-items={JSON.stringify(items)}
+  >
+    {items[0]}
+  </span>
+</div>
+
+<script is:inline>
+  (function () {
+    const el = document.getElementById("currently-building-text");
+    const container = document.getElementById("currently-building");
+    if (!el || !container) return;
+
+    let items;
+    try {
+      items = JSON.parse(el.dataset.items || "[]");
+    } catch {
+      return;
+    }
+    if (!items.length) return;
+
+    let i = 0;
+    let timer = null;
+    let visible = true;
+
+    const cycle = () => {
+      if (!visible) return;
+      el.style.opacity = "0";
+      window.setTimeout(() => {
+        i = (i + 1) % items.length;
+        el.textContent = items[i];
+        el.style.opacity = "1";
+      }, 400);
+    };
+
+    const start = () => {
+      if (timer != null) return;
+      timer = window.setInterval(cycle, 6000);
+    };
+    const stop = () => {
+      if (timer != null) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    };
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          visible = entry.isIntersecting;
+          if (visible) start();
+          else stop();
+        });
+      });
+      io.observe(container);
+    } else {
+      start();
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop();
+      else if (visible) start();
+    });
+  })();
+</script>

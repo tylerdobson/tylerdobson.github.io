@@ -31,7 +31,7 @@ const maxWidth = variant === "hero" ? "max-w-2xl" : "max-w-5xl";
         markerHeight="6"
         orient="auto"
       >
-        <path d="M0,0 L10,5 L0,10 z" fill="#2A2A3E"></path>
+        <path d="M0,0 L10,5 L0,10 z" fill="#D4C8B5"></path>
       </marker>
       <marker
         id="arrow-solid-rev"
@@ -42,7 +42,7 @@ const maxWidth = variant === "hero" ? "max-w-2xl" : "max-w-5xl";
         markerHeight="6"
         orient="auto"
       >
-        <path d="M10,0 L0,5 L10,10 z" fill="#2A2A3E"></path>
+        <path d="M10,0 L0,5 L10,10 z" fill="#D4C8B5"></path>
       </marker>
       <marker
         id="arrow-dashed"
@@ -53,58 +53,58 @@ const maxWidth = variant === "hero" ? "max-w-2xl" : "max-w-5xl";
         markerHeight="5"
         orient="auto"
       >
-        <path d="M0,0 L10,5 L0,10 z" fill="#6C63FF" opacity="0.6"></path>
+        <path d="M0,0 L10,5 L0,10 z" fill="#C25A2A" opacity="0.6"></path>
       </marker>
     </defs>
 
     <style is:inline>
       .arch-node-bg {
-        fill: #12121a;
-        stroke: #2a2a3e;
+        fill: #ffffff;
+        stroke: #d4c8b5;
         stroke-width: 1;
       }
       .arch-node-bg.hub {
-        stroke: #6c63ff;
+        stroke: #c25a2a;
         stroke-width: 1.5;
       }
       .arch-node-bg.github {
-        fill: #1a1a24;
-        stroke: #2a2a3e;
+        fill: #f2ece2;
+        stroke: #d4c8b5;
         stroke-dasharray: 4 3;
       }
       .arch-label-name {
-        fill: #e2e2e8;
+        fill: #1f1813;
         font-family: "Inter", system-ui, sans-serif;
         font-size: 14px;
         font-weight: 500;
       }
       .arch-label-sub {
-        fill: #9999a8;
+        fill: #94897b;
         font-family: "IBM Plex Mono", monospace;
         font-size: 10px;
         letter-spacing: 0.06em;
       }
       .arch-layer-label {
-        fill: #55556b;
+        fill: #b0a595;
         font-family: "IBM Plex Mono", monospace;
         font-size: 9px;
         letter-spacing: 0.18em;
         text-transform: uppercase;
       }
       .arch-edge-solid {
-        stroke: #2a2a3e;
+        stroke: #d4c8b5;
         stroke-width: 1.25;
         fill: none;
       }
       .arch-edge-dashed {
-        stroke: #6c63ff;
+        stroke: #c25a2a;
         stroke-width: 1;
         stroke-dasharray: 4 4;
         fill: none;
         opacity: 0.55;
       }
       .ai-group-outline {
-        stroke: #2a2a3e;
+        stroke: #d4c8b5;
         stroke-width: 1;
         stroke-dasharray: 3 3;
         fill: none;
@@ -118,278 +118,84 @@ const maxWidth = variant === "hero" ? "max-w-2xl" : "max-w-5xl";
     <text x="540" y="200" class="arch-layer-label">State</text>
     <text x="710" y="200" class="arch-layer-label">Output</text>
 
-    <rect
-      x="370"
-      y="350"
-      width="140"
-      height="180"
-      rx="10"
-      class="ai-group-outline"
-    ></rect>
+    <rect x="370" y="350" width="140" height="180" rx="10" class="ai-group-outline"></rect>
     <text x="378" y="370" class="arch-layer-label">LLM Agents</text>
 
-    <g
-      class="diagram-node"
-      style="animation-delay: 0ms;"
-    >
-      <rect
-        x="300"
-        y="40"
-        width="300"
-        height="56"
-        rx="8"
-        class="arch-node-bg github"
-      ></rect>
-      <text x="450" y="64" class="arch-label-name" text-anchor="middle">
-        GitHub
-      </text>
+    <g class="diagram-node" style="animation-delay: 0ms;">
+      <rect x="300" y="40" width="300" height="56" rx="8" class="arch-node-bg github"></rect>
+      <text x="450" y="64" class="arch-label-name" text-anchor="middle">GitHub</text>
       <text x="450" y="82" class="arch-label-sub" text-anchor="middle">
         prompts · scripts · docs
       </text>
     </g>
 
-    <g
-      class="diagram-node"
-      style="animation-delay: 100ms;"
-    >
-      <rect
-        x="30"
-        y="230"
-        width="140"
-        height="60"
-        rx="8"
-        class="arch-node-bg"
-      ></rect>
-      <text x="100" y="256" class="arch-label-name" text-anchor="middle">
-        Google Forms
-      </text>
-      <text x="100" y="274" class="arch-label-sub" text-anchor="middle">
-        manual entry
-      </text>
+    <g class="diagram-node" style="animation-delay: 100ms;">
+      <rect x="30" y="230" width="140" height="60" rx="8" class="arch-node-bg"></rect>
+      <text x="100" y="256" class="arch-label-name" text-anchor="middle">Google Forms</text>
+      <text x="100" y="274" class="arch-label-sub" text-anchor="middle">manual entry</text>
     </g>
 
-    <g
-      class="diagram-node"
-      style="animation-delay: 150ms;"
-    >
-      <rect
-        x="30"
-        y="330"
-        width="140"
-        height="60"
-        rx="8"
-        class="arch-node-bg"
-      ></rect>
-      <text x="100" y="356" class="arch-label-name" text-anchor="middle">
-        Gmail
-      </text>
-      <text x="100" y="374" class="arch-label-sub" text-anchor="middle">
-        incoming
-      </text>
+    <g class="diagram-node" style="animation-delay: 150ms;">
+      <rect x="30" y="330" width="140" height="60" rx="8" class="arch-node-bg"></rect>
+      <text x="100" y="356" class="arch-label-name" text-anchor="middle">Gmail</text>
+      <text x="100" y="374" class="arch-label-sub" text-anchor="middle">incoming</text>
     </g>
 
-    <g
-      class="diagram-node"
-      style="animation-delay: 250ms;"
-    >
-      <rect
-        x="200"
-        y="270"
-        width="140"
-        height="80"
-        rx="8"
-        class="arch-node-bg hub"
-      ></rect>
-      <text x="270" y="304" class="arch-label-name" text-anchor="middle">
-        Zapier
-      </text>
-      <text x="270" y="324" class="arch-label-sub" text-anchor="middle">
-        5 active Zaps
-      </text>
+    <g class="diagram-node" style="animation-delay: 250ms;">
+      <rect x="200" y="270" width="140" height="80" rx="8" class="arch-node-bg hub"></rect>
+      <text x="270" y="304" class="arch-label-name" text-anchor="middle">Zapier</text>
+      <text x="270" y="324" class="arch-label-sub" text-anchor="middle">5 active Zaps</text>
     </g>
 
-    <g
-      class="diagram-node"
-      style="animation-delay: 350ms;"
-    >
-      <rect
-        x="370"
-        y="380"
-        width="140"
-        height="60"
-        rx="8"
-        class="arch-node-bg"
-      ></rect>
-      <text x="440" y="406" class="arch-label-name" text-anchor="middle">
-        GPT-4o
-      </text>
-      <text x="440" y="424" class="arch-label-sub" text-anchor="middle">
-        extraction
-      </text>
+    <g class="diagram-node" style="animation-delay: 350ms;">
+      <rect x="370" y="380" width="140" height="60" rx="8" class="arch-node-bg"></rect>
+      <text x="440" y="406" class="arch-label-name" text-anchor="middle">GPT-4o</text>
+      <text x="440" y="424" class="arch-label-sub" text-anchor="middle">extraction</text>
     </g>
 
-    <g
-      class="diagram-node"
-      style="animation-delay: 400ms;"
-    >
-      <rect
-        x="370"
-        y="460"
-        width="140"
-        height="60"
-        rx="8"
-        class="arch-node-bg"
-      ></rect>
-      <text x="440" y="486" class="arch-label-name" text-anchor="middle">
-        Claude
-      </text>
-      <text x="440" y="504" class="arch-label-sub" text-anchor="middle">
-        reasoning
-      </text>
+    <g class="diagram-node" style="animation-delay: 400ms;">
+      <rect x="370" y="460" width="140" height="60" rx="8" class="arch-node-bg"></rect>
+      <text x="440" y="486" class="arch-label-name" text-anchor="middle">Claude</text>
+      <text x="440" y="504" class="arch-label-sub" text-anchor="middle">reasoning</text>
     </g>
 
-    <g
-      class="diagram-node"
-      style="animation-delay: 500ms;"
-    >
-      <rect
-        x="540"
-        y="270"
-        width="140"
-        height="80"
-        rx="8"
-        class="arch-node-bg"
-      ></rect>
-      <text x="610" y="304" class="arch-label-name" text-anchor="middle">
-        Google Sheets
-      </text>
+    <g class="diagram-node" style="animation-delay: 500ms;">
+      <rect x="540" y="270" width="140" height="80" rx="8" class="arch-node-bg"></rect>
+      <text x="610" y="304" class="arch-label-name" text-anchor="middle">Google Sheets</text>
       <text x="610" y="324" class="arch-label-sub" text-anchor="middle">
         Master Tracker · 23 fields
       </text>
     </g>
 
-    <g
-      class="diagram-node"
-      style="animation-delay: 600ms;"
-    >
-      <rect
-        x="710"
-        y="230"
-        width="160"
-        height="60"
-        rx="8"
-        class="arch-node-bg"
-      ></rect>
-      <text x="790" y="256" class="arch-label-name" text-anchor="middle">
-        Gmail
-      </text>
-      <text x="790" y="274" class="arch-label-sub" text-anchor="middle">
-        drafts
-      </text>
+    <g class="diagram-node" style="animation-delay: 600ms;">
+      <rect x="710" y="230" width="160" height="60" rx="8" class="arch-node-bg"></rect>
+      <text x="790" y="256" class="arch-label-name" text-anchor="middle">Gmail</text>
+      <text x="790" y="274" class="arch-label-sub" text-anchor="middle">drafts</text>
     </g>
 
-    <g
-      class="diagram-node"
-      style="animation-delay: 650ms;"
-    >
-      <rect
-        x="710"
-        y="330"
-        width="160"
-        height="60"
-        rx="8"
-        class="arch-node-bg"
-      ></rect>
-      <text x="790" y="356" class="arch-label-name" text-anchor="middle">
-        Google Calendar
-      </text>
-      <text x="790" y="374" class="arch-label-sub" text-anchor="middle">
-        reminders
-      </text>
+    <g class="diagram-node" style="animation-delay: 650ms;">
+      <rect x="710" y="330" width="160" height="60" rx="8" class="arch-node-bg"></rect>
+      <text x="790" y="356" class="arch-label-name" text-anchor="middle">Google Calendar</text>
+      <text x="790" y="374" class="arch-label-sub" text-anchor="middle">reminders</text>
     </g>
 
-    <path
-      d="M 170 260 L 200 295"
-      class="arch-edge-solid diagram-edge"
-      marker-end="url(#arrow-solid)"
-      style="--dash-len: 60;"
-    ></path>
-    <path
-      d="M 170 360 L 200 325"
-      class="arch-edge-solid diagram-edge"
-      marker-end="url(#arrow-solid)"
-      style="--dash-len: 60;"
-    ></path>
+    <path d="M 170 260 L 200 295" class="arch-edge-solid diagram-edge" marker-end="url(#arrow-solid)" style="--dash-len: 60;"></path>
+    <path d="M 170 360 L 200 325" class="arch-edge-solid diagram-edge" marker-end="url(#arrow-solid)" style="--dash-len: 60;"></path>
 
-    <path
-      d="M 340 305 L 370 305 L 380 380"
-      class="arch-edge-solid diagram-edge delay-1"
-      marker-end="url(#arrow-solid)"
-      style="--dash-len: 130;"
-    ></path>
-    <path
-      d="M 380 410 L 360 410 L 350 320 L 340 320"
-      class="arch-edge-solid diagram-edge delay-1"
-      marker-end="url(#arrow-solid)"
-      style="--dash-len: 150;"
-    ></path>
+    <path d="M 340 305 L 370 305 L 380 380" class="arch-edge-solid diagram-edge delay-1" marker-end="url(#arrow-solid)" style="--dash-len: 130;"></path>
+    <path d="M 380 410 L 360 410 L 350 320 L 340 320" class="arch-edge-solid diagram-edge delay-1" marker-end="url(#arrow-solid)" style="--dash-len: 150;"></path>
 
-    <path
-      d="M 340 320 L 380 490"
-      class="arch-edge-solid diagram-edge delay-2"
-      marker-end="url(#arrow-solid)"
-      style="--dash-len: 200;"
-    ></path>
-    <path
-      d="M 380 470 L 350 470 L 350 335 L 340 335"
-      class="arch-edge-solid diagram-edge delay-2"
-      marker-end="url(#arrow-solid)"
-      style="--dash-len: 200;"
-    ></path>
+    <path d="M 340 320 L 380 490" class="arch-edge-solid diagram-edge delay-2" marker-end="url(#arrow-solid)" style="--dash-len: 200;"></path>
+    <path d="M 380 470 L 350 470 L 350 335 L 340 335" class="arch-edge-solid diagram-edge delay-2" marker-end="url(#arrow-solid)" style="--dash-len: 200;"></path>
 
-    <path
-      d="M 340 305 L 540 305"
-      class="arch-edge-solid diagram-edge delay-2"
-      marker-end="url(#arrow-solid)"
-      style="--dash-len: 210;"
-    ></path>
-    <path
-      d="M 540 320 L 340 320"
-      class="arch-edge-solid diagram-edge delay-2"
-      marker-end="url(#arrow-solid)"
-      style="--dash-len: 210;"
-    ></path>
+    <path d="M 340 305 L 540 305" class="arch-edge-solid diagram-edge delay-2" marker-end="url(#arrow-solid)" style="--dash-len: 210;"></path>
+    <path d="M 540 320 L 340 320" class="arch-edge-solid diagram-edge delay-2" marker-end="url(#arrow-solid)" style="--dash-len: 210;"></path>
 
-    <path
-      d="M 680 290 L 710 260"
-      class="arch-edge-solid diagram-edge delay-3"
-      marker-end="url(#arrow-solid)"
-      style="--dash-len: 60;"
-    ></path>
-    <path
-      d="M 680 330 L 710 360"
-      class="arch-edge-solid diagram-edge delay-3"
-      marker-end="url(#arrow-solid)"
-      style="--dash-len: 60;"
-    ></path>
+    <path d="M 680 290 L 710 260" class="arch-edge-solid diagram-edge delay-3" marker-end="url(#arrow-solid)" style="--dash-len: 60;"></path>
+    <path d="M 680 330 L 710 360" class="arch-edge-solid diagram-edge delay-3" marker-end="url(#arrow-solid)" style="--dash-len: 60;"></path>
 
-    <path
-      d="M 380 96 L 280 270"
-      class="arch-edge-dashed diagram-edge delay-1"
-      marker-end="url(#arrow-dashed)"
-      style="--dash-len: 220;"
-    ></path>
-    <path
-      d="M 460 96 L 430 380"
-      class="arch-edge-dashed diagram-edge delay-1"
-      marker-end="url(#arrow-dashed)"
-      style="--dash-len: 290;"
-    ></path>
-    <path
-      d="M 520 96 L 450 460"
-      class="arch-edge-dashed diagram-edge delay-1"
-      marker-end="url(#arrow-dashed)"
-      style="--dash-len: 370;"
-    ></path>
+    <path d="M 380 96 L 280 270" class="arch-edge-dashed diagram-edge delay-1" marker-end="url(#arrow-dashed)" style="--dash-len: 220;"></path>
+    <path d="M 460 96 L 430 380" class="arch-edge-dashed diagram-edge delay-1" marker-end="url(#arrow-dashed)" style="--dash-len: 290;"></path>
+    <path d="M 520 96 L 450 460" class="arch-edge-dashed diagram-edge delay-1" marker-end="url(#arrow-dashed)" style="--dash-len: 370;"></path>
   </svg>
 </div>
