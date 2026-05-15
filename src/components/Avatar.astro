@@ -1,0 +1,25 @@
+---
+import { existsSync } from "node:fs";
+
+interface Props {
+  alt?: string;
+  class?: string;
+  height?: number;
+  loading?: "eager" | "lazy";
+  width?: number;
+}
+
+const {
+  alt = "Tyler Dobson",
+  class: className = "",
+  height = 32,
+  loading = "lazy",
+  width = 32,
+} = Astro.props;
+
+const candidates = ["avatar.jpg", "avatar.png", "avatar.svg", "favicon.svg"];
+const file = candidates.find((name) => existsSync(new URL(`../../public/${name}`, import.meta.url)));
+const src = file ? `/${file}` : "/favicon.svg";
+---
+
+<img src={src} alt={alt} width={width} height={height} loading={loading} class={className} />

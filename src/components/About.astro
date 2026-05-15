@@ -1,4 +1,5 @@
 ---
+import Avatar from "./Avatar.astro";
 import SectionLabel from "./SectionLabel.astro";
 ---
 
@@ -19,18 +20,13 @@ import SectionLabel from "./SectionLabel.astro";
           class="overflow-hidden rounded-xl border border-border-strong bg-bg-elev shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)]"
           style="transform: rotate(-1deg);"
         >
-          <picture>
-            <source srcset="/avatar.png" type="image/png" />
-            <source srcset="/avatar.jpg" type="image/jpeg" />
-            <img
-              src="/avatar.svg"
-              alt="Tyler Dobson"
-              width="240"
-              height="240"
-              loading="lazy"
-              class="block h-auto w-full"
-            />
-          </picture>
+          <Avatar
+            alt="Tyler Dobson"
+            width={240}
+            height={240}
+            loading="lazy"
+            class="block h-auto w-full"
+          />
         </div>
       </div>
 

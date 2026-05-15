@@ -8,14 +8,14 @@ const items = [
 
 <div
   id="currently-building"
-  class="mt-6 flex items-center gap-3"
+  class="mt-6 flex min-w-0 items-center gap-3 overflow-hidden"
   aria-live="polite"
   aria-atomic="true"
 >
-  <span class="pulse-dot" aria-hidden="true"></span>
+  <span class="pulse-dot shrink-0" aria-hidden="true"></span>
   <span
     id="currently-building-text"
-    class="font-mono text-xs text-text-muted transition-opacity duration-500"
+    class="block min-w-0 truncate font-mono text-[10px] text-text-muted transition-opacity duration-500 sm:text-xs"
     style="font-family: var(--font-mono);"
     data-items={JSON.stringify(items)}
   >

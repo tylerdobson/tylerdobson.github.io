@@ -11,7 +11,7 @@
   /* Text */
   --color-text: #e2e2e8;
   --color-text-dim: #9999a8;
-  --color-text-muted: #55556b;
+  --color-text-muted: #808096;
 
   /* Accent — purple (CTAs, links, hover, one-word emphasis) */
   --color-accent: #6c63ff;
@@ -64,7 +64,7 @@ body {
 /* Hand-drawn underline on the H1 accent phrase — purple ink */
 .ink-underline {
   position: relative;
-  white-space: nowrap;
+  white-space: normal;
 }
 .ink-underline::after {
   content: "";
@@ -77,6 +77,11 @@ body {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   pointer-events: none;
+}
+@media (min-width: 640px) {
+  .ink-underline {
+    white-space: nowrap;
+  }
 }
 
 /* Move 1 — Mouse-tracked radial gradient, hero only, 0.08 inner stop max */
