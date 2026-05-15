@@ -1,0 +1,29 @@
+---
+interface Props {
+  tier: string;
+  label: string;
+  items: string[];
+}
+
+const { tier, label, items } = Astro.props;
+---
+
+<div class="rounded-xl border border-border bg-bg-elev p-6 transition-colors hover:border-border-strong">
+  <p
+    class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+    style="font-family: var(--font-mono);"
+  >
+    {tier}
+  </p>
+  <h3 class="mt-1 text-lg font-medium text-text">{label}</h3>
+  <ul class="mt-4 space-y-2">
+    {
+      items.map((item) => (
+        <li class="flex gap-3 text-sm leading-relaxed text-text-dim">
+          <span class="select-none text-accent" aria-hidden="true">·</span>
+          <span>{item}</span>
+        </li>
+      ))
+    }
+  </ul>
+</div>

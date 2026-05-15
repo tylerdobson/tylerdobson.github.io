@@ -1,0 +1,117 @@
+---
+const links = [
+  { label: "Flagship", href: "/#flagship" },
+  { label: "Case Studies", href: "/#case-studies" },
+  { label: "Approach", href: "/#approach" },
+  { label: "Contact", href: "/#contact" },
+];
+---
+
+<nav
+  id="site-nav"
+  class="sticky top-0 z-50 transition-all duration-200 ease-out"
+>
+  <div class="mx-auto flex max-w-[72rem] items-center justify-between px-6 py-4 sm:px-10">
+    <a
+      href="/"
+      class="flex items-baseline gap-2 font-mono text-sm tracking-tight text-text hover:text-accent transition-colors"
+      style="font-family: var(--font-mono);"
+    >
+      <span class="text-accent">TD</span>
+      <span class="text-text-muted">·</span>
+      <span class="font-sans font-medium" style="font-family: var(--font-sans);">Tyler Dobson</span>
+    </a>
+
+    <div class="hidden items-center gap-7 md:flex">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="text-sm text-text-dim hover:text-accent transition-colors"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href="https://github.com/tylerdobson"
+        target="_blank"
+        rel="noopener"
+        class="text-sm text-text-dim hover:text-accent transition-colors"
+      >
+        GitHub <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <button
+      id="nav-toggle"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      class="md:hidden flex h-9 w-9 items-center justify-center rounded-lg border border-border text-text-dim hover:text-accent hover:border-border-strong transition-colors"
+    >
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M2 5h14M2 9h14M2 13h14" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden border-t border-border bg-bg/95 backdrop-blur md:hidden"
+  >
+    <div class="mx-auto flex max-w-[72rem] flex-col gap-1 px-6 py-4">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="rounded-md px-2 py-2 text-sm text-text-dim hover:text-accent hover:bg-bg-elev transition-colors"
+            data-mobile-link
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href="https://github.com/tylerdobson"
+        target="_blank"
+        rel="noopener"
+        class="rounded-md px-2 py-2 text-sm text-text-dim hover:text-accent hover:bg-bg-elev transition-colors"
+      >
+        GitHub <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+  (function () {
+    const nav = document.getElementById("site-nav");
+    const toggle = document.getElementById("nav-toggle");
+    const menu = document.getElementById("mobile-menu");
+
+    if (nav) {
+      const setScrolled = () => {
+        if (window.scrollY > 4) {
+          nav.classList.add("bg-bg/85", "backdrop-blur", "border-b", "border-border");
+        } else {
+          nav.classList.remove("bg-bg/85", "backdrop-blur", "border-b", "border-border");
+        }
+      };
+      setScrolled();
+      window.addEventListener("scroll", setScrolled, { passive: true });
+    }
+
+    if (toggle && menu) {
+      toggle.addEventListener("click", () => {
+        const open = menu.classList.toggle("hidden") === false;
+        toggle.setAttribute("aria-expanded", String(open));
+      });
+      menu.querySelectorAll("[data-mobile-link]").forEach((el) => {
+        el.addEventListener("click", () => {
+          menu.classList.add("hidden");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+  })();
+</script>

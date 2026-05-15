@@ -1,0 +1,65 @@
+---
+import type { ProjectCardData } from "../content/projects.ts";
+
+interface Props {
+  project: ProjectCardData;
+}
+
+const { project } = Astro.props;
+---
+
+<article
+  class="rounded-xl border border-border bg-bg-elev p-6 sm:p-8 transition-colors hover:border-border-strong"
+>
+  {
+    project.image && (
+      <div class="mb-6 overflow-hidden rounded-lg border border-border">
+        <img
+          src={project.image}
+          alt={`${project.title} preview`}
+          loading="lazy"
+          class="block h-auto w-full"
+        />
+      </div>
+    )
+  }
+
+  <p
+    class="font-mono text-xs uppercase tracking-[0.12em] text-text-muted"
+    style="font-family: var(--font-mono);"
+  >
+    {project.tech.join(" · ")}
+  </p>
+
+  <h3 class="mt-2 text-xl font-medium text-text">
+    {project.title}
+  </h3>
+
+  <p class="mt-3 text-base leading-relaxed text-text-dim">
+    {project.description}
+  </p>
+
+  {
+    project.finding && (
+      <p class="mt-5 border-l-2 border-accent bg-accent-dim/40 py-3 pl-4 pr-3 text-sm leading-relaxed text-text">
+        {project.finding}
+      </p>
+    )
+  }
+
+  <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+    {
+      project.links.map((link) => (
+        <a
+          href={link.href}
+          target={link.external ? "_blank" : undefined}
+          rel={link.external ? "noopener" : undefined}
+          class="text-sm text-text-dim hover:text-accent transition-colors"
+        >
+          {link.label}
+          {link.external && <span aria-hidden="true"> ↗</span>}
+        </a>
+      ))
+    }
+  </div>
+</article>

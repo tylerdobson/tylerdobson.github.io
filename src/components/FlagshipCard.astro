@@ -1,0 +1,73 @@
+---
+import { flagshipProject } from "../content/projects.ts";
+
+const project = flagshipProject;
+---
+
+<section id="flagship" class="px-6 py-20 sm:px-10 sm:py-24">
+  <div class="mx-auto max-w-[72rem]">
+    <div
+      class="rounded-xl border border-border bg-bg-elev p-8 sm:p-12 transition-colors hover:border-border-strong"
+    >
+      <h2
+        class="font-light tracking-tight text-text"
+        style="font-size: clamp(1.75rem, 3vw, 2.5rem);"
+      >
+        {project.title}
+      </h2>
+
+      <p class="mt-4 text-lg leading-relaxed text-text-dim">
+        {project.oneLine}
+      </p>
+
+      <p class="mt-5 max-w-3xl text-base leading-relaxed text-text-dim">
+        {project.body}
+      </p>
+
+      <div class="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4">
+        {
+          project.stats.map((stat) => (
+            <div class="border-l border-border-strong pl-4">
+              <div
+                class="text-3xl font-light text-text"
+                style="font-family: var(--font-sans);"
+              >
+                {stat.value}
+              </div>
+              <div
+                class="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-text-muted"
+                style="font-family: var(--font-mono);"
+              >
+                {stat.label}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <p
+        class="mt-8 font-mono text-xs text-text-muted"
+        style="font-family: var(--font-mono);"
+      >
+        {project.tech.join(" · ")}
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a
+          href={project.caseStudyHref}
+          class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-white hover:bg-accent-hover transition-all duration-200 ease-out"
+        >
+          Read the full case study <span aria-hidden="true">→</span>
+        </a>
+        <a
+          href={project.repoHref}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+        >
+          View repo <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

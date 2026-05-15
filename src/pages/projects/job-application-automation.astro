@@ -1,0 +1,305 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import ArchitectureDiagram from "../../components/ArchitectureDiagram.astro";
+import PrismCode from "../../components/PrismCode.astro";
+
+const title = "Job Application Automation — Case Study · Tyler Dobson";
+const description =
+  "A multi-agent AI workflow with eight integrated tools, running on Zapier, GPT-4o, Claude, and GitHub. Built by Tyler Dobson.";
+
+const toolTable = [
+  ["Google Forms", "Manual job application entry"],
+  ["Google Sheets", "Master tracker database (23 fields, AI-enriched rows)"],
+  ["Zapier", "No-code automation engine, 5 active Zaps"],
+  ["Gmail", "Detects confirmations, recruiter replies, interview requests"],
+  ["Google Calendar", "Follow-up reminders and interview prep blocks"],
+  ["GPT-4o", "Structured extraction: skills, companies, roles, JSON normalization"],
+  [
+    "Anthropic Claude",
+    "Reasoning: fit scoring, summaries, follow-up drafting, recommendations",
+  ],
+  ["GitHub", "Version control for prompts, scripts, docs, automation specs"],
+];
+
+const masterFields = [
+  "Application ID",
+  "Date Applied",
+  "Company",
+  "Job Title",
+  "Job Link",
+  "Platform",
+  "Location",
+  "Work Format",
+  "Internship Type",
+  "Status",
+  "Priority",
+  "Resume Version",
+  "Cover Letter Used",
+  "Recruiter Name",
+  "Recruiter Email",
+  "Skills Mentioned",
+  "AI Fit Score",
+  "AI Summary",
+  "Next Action",
+  "Follow-Up Date",
+  "Interview Date",
+  "Notes",
+  "Last Updated",
+];
+
+const zap1 = `Trigger:  New Google Form response
+Steps:
+  1. Format the form response
+  2. Send job title + company + notes + link to GPT-4o → extract skills, summary
+  3. Send extracted context to Claude → fit score, next action
+  4. Append enriched row to Google Sheets Master Tracker
+  5. Create Google Calendar follow-up event 7 days out`;
+
+const zap2 = `Trigger:  New Gmail email matching application-confirmation patterns
+Steps:
+  1. GPT extracts company and role from the email body
+  2. Check Master Tracker for a matching row
+  3. If match: update status → "Application Confirmed"
+  4. If no match: insert new row, source tag "Gmail Auto-Detected"`;
+
+const zap3 = `Trigger:  Daily at 8:00 AM
+Steps:
+  1. Query Master Tracker for rows where Follow-Up Date = today and Status ≠ closed
+  2. For each row, generate a follow-up email with Claude (drafts only, never auto-send)
+  3. Save draft to Gmail
+  4. Create a Calendar reminder`;
+
+const zap4 = `Trigger:  New Gmail email classified as interview request
+Steps:
+  1. Claude classifies email type and extracts interview metadata
+  2. Update Master Tracker status → "Interview Scheduled"
+  3. Create Calendar event with interview details
+  4. Generate prep checklist into the Master Tracker notes column`;
+
+const zap5 = `Trigger:  New Gmail email matching rejection patterns
+Steps:
+  1. GPT extracts company and role
+  2. Update Master Tracker status → "Closed - Rejected"
+  3. Log to weekly summary sheet for retrospective analysis`;
+
+const repoStructure = `job-application-automation/
+├── README.md
+├── workflow-spec.md
+├── prompts/
+│   ├── extract_job_info.md
+│   ├── score_job_fit.md
+│   ├── draft_follow_up.md
+│   └── classify_gmail.md
+├── google-apps-script/
+│   ├── dedupe_rows.gs
+│   ├── update_status.gs
+│   └── calendar_followups.gs
+├── zapier/
+│   ├── zap_1_form_to_sheet.md
+│   ├── zap_2_gmail_confirmation.md
+│   ├── zap_3_followup_reminder.md
+│   ├── zap_4_interview_detection.md
+│   └── zap_5_rejection_tracking.md
+└── docs/
+    ├── sheet_schema.md
+    ├── status_options.md
+    └── setup_checklist.md`;
+---
+
+<CaseStudyLayout title={title} description={description}>
+  <p
+    class="font-mono text-xs uppercase tracking-[0.14em] text-accent"
+    style="font-family: var(--font-mono);"
+  >
+    Flagship case study
+  </p>
+
+  <h1
+    class="mt-3 font-light leading-[1.1] tracking-tight text-text"
+    style="font-size: clamp(2rem, 5vw, 3.25rem);"
+  >
+    Job Application Automation System
+  </h1>
+
+  <p class="mt-5 text-lg leading-relaxed text-text-dim">
+    A multi-agent AI workflow with eight integrated tools, running on Zapier, GPT-4o, Claude,
+    and GitHub.
+  </p>
+
+  <p
+    class="mt-5 font-mono text-xs uppercase tracking-[0.14em] text-text-muted"
+    style="font-family: var(--font-mono);"
+  >
+    2026 · Personal Project · Active System
+  </p>
+
+  <p class="mt-6">
+    <a href="/" class="text-sm text-text-dim hover:text-accent transition-colors">
+      ← Back to portfolio
+    </a>
+  </p>
+
+  <hr class="my-12 border-border" />
+
+  <h2 class="text-2xl font-light text-text">The problem</h2>
+  <p class="mt-4 text-base leading-relaxed text-text-dim">
+    I was applying to internships at a rate I couldn't manually track. Rows in a spreadsheet,
+    half-remembered follow-ups, recruiter emails buried in Gmail, no signal on which roles were
+    worth my time and which were dead ends. The applications themselves weren't the bottleneck —
+    the operational overhead of running a serious job search was.
+  </p>
+  <p class="mt-4 text-base leading-relaxed text-text-dim">
+    So I built the system I would have wanted from day one.
+  </p>
+
+  <hr class="my-12 border-border" />
+
+  <h2 class="text-2xl font-light text-text">System architecture</h2>
+  <div class="-mx-2 my-8 sm:-mx-6">
+    <ArchitectureDiagram variant="large" />
+  </div>
+  <p class="mt-4 text-base leading-relaxed text-text-dim">
+    The system has eight integrated tools and a clean separation of concerns. Google Forms is
+    the manual entry point. Zapier is the automation engine — every event flows through a Zap.
+    Google Sheets is the source of truth: every application, every status update, every
+    AI-generated field lives in one master tracker. GPT-4o handles structured extraction —
+    turning messy job descriptions and recruiter emails into clean JSON. Claude handles
+    reasoning — scoring fit, summarizing roles, drafting follow-up emails, recommending next
+    actions. Gmail is both an input (detecting confirmations, recruiter replies, interview
+    requests) and an output (drafting follow-ups). Google Calendar handles the timing layer.
+    GitHub is the control center, version-controlling the prompts, scripts, and workflow
+    documentation.
+  </p>
+
+  <hr class="my-12 border-border" />
+
+  <h2 class="text-2xl font-light text-text">Tool responsibilities</h2>
+  <div class="mt-6 overflow-hidden rounded-xl border border-border">
+    <table class="w-full border-collapse text-sm">
+      <thead>
+        <tr class="bg-bg-elev">
+          <th
+            class="border-b border-border px-4 py-3 text-left font-mono text-xs uppercase tracking-[0.12em] text-text-muted"
+            style="font-family: var(--font-mono);"
+          >
+            Tool
+          </th>
+          <th
+            class="border-b border-border px-4 py-3 text-left font-mono text-xs uppercase tracking-[0.12em] text-text-muted"
+            style="font-family: var(--font-mono);"
+          >
+            Role
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          toolTable.map(([tool, role]) => (
+            <tr class="border-t border-border first:border-t-0">
+              <td class="px-4 py-3 align-top font-medium text-text">{tool}</td>
+              <td class="px-4 py-3 align-top text-text-dim">{role}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="my-12 border-border" />
+
+  <h2 class="text-2xl font-light text-text">Why two LLMs?</h2>
+  <p class="mt-4 text-base leading-relaxed text-text-dim">
+    GPT and Claude have different strengths, and assigning them by capability instead of using
+    one for everything is what makes the system reliable.
+  </p>
+  <p class="mt-4 text-base leading-relaxed text-text-dim">
+    GPT-4o gets structured extraction. It's fast, cheap, and unusually good at producing valid
+    JSON on the first try. Every Zap that needs a clean field — extract the company from this
+    email, normalize this skill list, classify whether this message is an interview request —
+    goes through GPT.
+  </p>
+  <p class="mt-4 text-base leading-relaxed text-text-dim">
+    Claude gets reasoning and writing. Fit scores on a 1-10 scale with justification.
+    Two-sentence summaries that emphasize what actually matters. Follow-up emails written in my
+    voice. Recommendations for next actions based on application context. This is where output
+    quality matters more than speed or cost.
+  </p>
+
+  <hr class="my-12 border-border" />
+
+  <h2 class="text-2xl font-light text-text">The five Zaps</h2>
+
+  <h3 class="mt-8 text-lg font-medium text-text">Zap 1 — Form to Master Tracker</h3>
+  <PrismCode code={zap1} />
+
+  <h3 class="mt-8 text-lg font-medium text-text">Zap 2 — Gmail confirmation detection</h3>
+  <PrismCode code={zap2} />
+
+  <h3 class="mt-8 text-lg font-medium text-text">Zap 3 — Daily follow-up scheduler</h3>
+  <PrismCode code={zap3} />
+
+  <h3 class="mt-8 text-lg font-medium text-text">Zap 4 — Interview detection</h3>
+  <PrismCode code={zap4} />
+
+  <h3 class="mt-8 text-lg font-medium text-text">Zap 5 — Rejection / closure tracking</h3>
+  <PrismCode code={zap5} />
+
+  <hr class="my-12 border-border" />
+
+  <h2 class="text-2xl font-light text-text">The Master Tracker schema</h2>
+  <p class="mt-4 text-base leading-relaxed text-text-dim">
+    Twenty-three columns, every row enriched by the system as it moves through the pipeline.
+  </p>
+  <div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 rounded-xl border border-border bg-bg-elev p-6 font-mono text-sm text-text-dim" style="font-family: var(--font-mono);">
+    {masterFields.map((field) => <span>{field}</span>)}
+  </div>
+
+  <hr class="my-12 border-border" />
+
+  <h2 class="text-2xl font-light text-text">Repository structure</h2>
+  <PrismCode code={repoStructure} />
+
+  <hr class="my-12 border-border" />
+
+  <h2 class="text-2xl font-light text-text">What I learned</h2>
+  <p class="mt-4 text-base leading-relaxed text-text-dim">
+    Three takeaways from running this system on my own job search for the past several weeks.
+  </p>
+
+  <h3 class="mt-8 text-lg font-medium text-text">
+    1. Separate capabilities, don't multiplex one model.
+  </h3>
+  <p class="mt-3 text-base leading-relaxed text-text-dim">
+    Using GPT for extraction and Claude for reasoning produced consistently better output than
+    either model trying to do both. The temptation to use a single model for everything is real,
+    and it's a quality-killer.
+  </p>
+
+  <h3 class="mt-8 text-lg font-medium text-text">2. Drafts beat auto-send every time.</h3>
+  <p class="mt-3 text-base leading-relaxed text-text-dim">
+    Early versions of the system tried to auto-send follow-up emails. The drafts were good —
+    but not as good as me reading them, adjusting one or two phrases, and sending in 15
+    seconds. The human-in-the-loop is the right tradeoff for outbound communication.
+  </p>
+
+  <h3 class="mt-8 text-lg font-medium text-text">3. The Sheet is the database. Treat it like one.</h3>
+  <p class="mt-3 text-base leading-relaxed text-text-dim">
+    Schema discipline matters. Status enums matter. Last-updated timestamps matter. The moment
+    I treated Google Sheets like a real source of truth instead of a scratchpad, the rest of
+    the system became reliable.
+  </p>
+
+  <hr class="my-12 border-border" />
+
+  <div class="rounded-xl border border-border bg-bg-elev p-6 sm:p-8">
+    <p class="text-base leading-relaxed text-text">
+      Want to talk about the system, or you're hiring for AI / Data Engineering roles? Email me:
+      <a
+        href="mailto:tydobson41@gmail.com"
+        class="text-accent hover:text-accent-hover underline-offset-4 hover:underline"
+      >
+        tydobson41@gmail.com
+      </a>.
+    </p>
+  </div>
+</CaseStudyLayout>

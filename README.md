@@ -1,145 +1,76 @@
-# Tyler Dobson | Business Analytics & AI Portfolio
+# tylerdobson.github.io
 
-This repository powers my personal GitHub Pages portfolio website:
+Personal portfolio for Tyler Dobson — built with Astro 5, TypeScript, and Tailwind CSS v4.
 
-**Live site:** https://tylerdobson.github.io/
+## Stack
 
-## Overview
+- Astro 5 (static, content-first)
+- TypeScript (strict)
+- Tailwind CSS v4 (CSS-first theme tokens via `@theme`)
+- Inline SVG architecture diagram (no chart libraries)
+- Inter (body) and IBM Plex Mono (eyebrows, code) via Google Fonts
+- Deployed via GitHub Actions → GitHub Pages
 
-This portfolio presents my analytics work as a **Business Analytics & AI Student at the University of South Florida**. It highlights internship-ready projects across Python, SQL, SQLite, Streamlit, Tableau, Plotly, API analytics, data cleaning, dashboarding, and business intelligence.
+## Local development
 
-The site is designed as a professional hub for GitHub, LinkedIn, internship applications, and recruiter review.
-
-## Selected Case Studies
-
-### Retail KPI & Forecasting Sandbox
-
-Streamlit analytics workflow that turns modeled retail operating data into KPIs, forecasts, scenario analysis, exports, and executive-style recommendations.
-
-Finding: The recommendation engine flags low-margin, high-volume segments as a risk; one example action is to improve product economics before pushing more volume.
-
-Repository: https://github.com/tylerdobson/mvp-for-a-decision-intelligence-lab
-
-Validation notes: https://github.com/tylerdobson/mvp-for-a-decision-intelligence-lab/blob/main/docs/PORTFOLIO_PROOF.md
-
-### Spotify Analytics Dashboard
-
-Professional Streamlit dashboard for Spotify OAuth analytics, live playback context, top tracks and artists, local SQLite listening history, playlist workflows, demo-safe review, and data exports.
-
-Finding: In May 2026, my saved Spotify history showed a repeat-listening pattern: the leading artist had 8 plays, and the top repeated track appeared 4 times, turning the raw API feed into a repeat-listening pattern.
-
-Repository: https://github.com/tylerdobson/Spotify-Analytics-
-
-Validation notes: https://github.com/tylerdobson/Spotify-Analytics-/blob/main/docs/PORTFOLIO_PROOF.md
-
-## Additional Featured Projects
-
-### Airbnb Market Intelligence Dashboard
-
-End-to-end short-term rental analytics project using Python, SQL, SQLite, Streamlit, and Plotly.
-
-Repository: https://github.com/tylerdobson/airbnb-market-intelligence-dashboard
-
-### SEC Financial Statement Pipeline
-
-Reproducible Python ETL pipeline that pulls official SEC EDGAR company facts, standardizes financial metrics, and publishes CSV, SQLite, and Markdown outputs.
-
-Repository: https://github.com/tylerdobson/sec-financial-statement-pipeline
-
-### Canvas Assignment Calendar Agent
-
-Python automation that reads Canvas assignments, finds incomplete work due today, and creates or updates Google Calendar due-time and reminder events.
-
-Repository: https://github.com/tylerdobson/Canvas-Assignment-Calendar-Agent
-
-### Sales Data Cleaning and Standardization
-
-Python data-cleaning pipeline that standardizes messy retail sales exports, separates invalid records, and publishes cleaned outputs to CSV and SQLite.
-
-Repository: https://github.com/tylerdobson/sales-data-cleaning-standardization
-
-### SQL Retail Revenue Analysis
-
-SQL project focused on retail revenue analysis, table creation, joins, aggregations, revenue by region, top customers, best-selling products, and monthly trends.
-
-Repository: https://github.com/tylerdobson/sql-retail-revenue-analysis
-
-### Tableau Forecasting and Discount Analysis
-
-Executive-style Tableau dashboard project analyzing sales performance, discount behavior, profitability, and forecasting trends.
-
-Repository: https://github.com/tylerdobson/tableau-forecasting-discount-analysis
-
-### SQL Labor Market Intelligence
-
-Warehouse-style SQL project focused on labor market and affordability reporting using dimension tables, fact tables, views, and quality checks.
-
-Repository: https://github.com/tylerdobson/sql-labor-market-intelligence
-
-### Job Application Quick-Fill
-
-Small Python CLI for searching saved application answers, filling template variables, copying responses to the clipboard, and tracking usage.
-
-Repository: https://github.com/tylerdobson/Job-Application-Quick-Fill
-
-## Technical Stack
-
-- SQL
-- Python
-- Pandas
-- SQLite
-- Streamlit
-- Plotly
-- Tableau
-- Power BI
-- Excel
-- Spotipy / Spotify API
-- GitHub Pages
-- Data cleaning
-- Dashboard design
-- Business analytics
-
-## Repository Structure
-
-```text
-tylerdobson.github.io/
-|-- index.html
-|-- README.md
-|-- scripts/
-|   |-- apply_portfolio_critique_fixes.py
-|   `-- sync_project_media.py
-`-- assets/
-    |-- css/
-    |   `-- styles.css
-    |-- js/
-    |   `-- main.js
-    `-- projects/
+```bash
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # produces dist/
+npm run preview    # serves the built site locally
 ```
 
-## Local Maintenance
+## Project structure
 
-The Spotify case-study finding is generated from a private local Spotify Analytics export before publishing:
+```
+.
+├── .github/workflows/deploy.yml        # GitHub Pages CI
+├── astro.config.mjs
+├── public/
+│   ├── favicon.svg
+│   ├── og-image.svg
+│   ├── resume.pdf                      # placeholder — replace with real résumé
+│   └── assets/
+│       ├── projects/                   # case-study imagery
+│       └── architecture/               # diagram source files
+├── src/
+│   ├── components/                     # Astro components (Nav, Hero, ArchitectureDiagram, etc.)
+│   ├── content/projects.ts             # typed project metadata
+│   ├── layouts/                        # BaseLayout, CaseStudyLayout
+│   ├── pages/
+│   │   ├── index.astro                 # single-page main site
+│   │   └── projects/
+│   │       └── job-application-automation.astro
+│   └── styles/globals.css              # Tailwind v4 entrypoint + design tokens
+└── tsconfig.json
+```
+
+## Deployment to GitHub Pages
+
+This repo serves the live site at `https://tylerdobson.github.io/` (user-pages).
+
+The GitHub Actions workflow (`.github/workflows/deploy.yml`) builds on push to `main` and deploys via `actions/deploy-pages@v4`. Make sure **Settings → Pages → Source** is set to **GitHub Actions** (not branch).
+
+## First-time push (replacing the existing site)
+
+If this is replacing existing content in the GitHub repo:
 
 ```powershell
-python scripts/apply_portfolio_critique_fixes.py --spotify-db "C:\path\to\spotify_analytics.db"
+# In the existing local clone of tylerdobson.github.io (back up first if you want)
+git checkout main
+git rm -rf .
+# Copy every file from this folder into the cloned repo root
+# Then:
+git add .
+git commit -m "Rebuild portfolio: Astro + Tailwind v4 + AI Engineer positioning"
+git push origin main
 ```
 
-or:
+Old commits remain in history regardless — the new build is just the latest commit.
 
-```powershell
-python scripts/apply_portfolio_critique_fixes.py --spotify-csv "C:\path\to\listening_history.csv"
-```
+## What still needs Tyler
 
-The script reads the local listening history, writes one public-facing finding sentence into `index.html` and `README.md`, and refuses to run if the finding still looks like a placeholder.
-
-Public-safe case-study screenshots are synced into the Pages repo before publishing:
-
-```powershell
-python scripts/sync_project_media.py
-```
-
-## Contact
-
-- GitHub: https://github.com/tylerdobson
-- LinkedIn: https://www.linkedin.com/in/tylerdobson
-- Email: tydobson41@gmail.com
+- `public/resume.pdf` — replace the placeholder with the real résumé
+- `public/assets/projects/retail-kpi/hero.png` — drop in
+- `public/assets/projects/spotify-analytics/hero.png` — drop in
+- `public/og-image.png` — convert `og-image.svg` to PNG (1200×630) for LinkedIn / X cards. Any SVG-to-PNG tool works; CloudConvert or `npx svg-to-img` both fine.

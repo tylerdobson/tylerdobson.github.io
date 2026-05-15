@@ -1,0 +1,66 @@
+---
+import ArchitectureDiagram from "./ArchitectureDiagram.astro";
+---
+
+<section class="px-6 pt-12 pb-20 sm:px-10 sm:pt-16 sm:pb-28">
+  <div class="mx-auto max-w-[72rem]">
+    <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
+      <div>
+        <p
+          class="font-mono text-xs uppercase tracking-[0.12em] text-accent"
+          style="font-family: var(--font-mono);"
+        >
+          Available for Summer 2026 internships
+        </p>
+
+        <h1
+          class="mt-5 font-light leading-[1.08] tracking-tight text-text"
+          style="font-size: clamp(2.5rem, 6vw, 4.5rem);"
+        >
+          I build AI-powered systems that turn manual workflows into automated infrastructure.
+        </h1>
+
+        <p class="mt-6 max-w-2xl text-base leading-relaxed text-text-dim sm:text-lg">
+          Junior at the University of South Florida studying Artificial Intelligence, Analytics,
+          and Information Systems. Currently pursuing Data Engineering, AI Engineering, and
+          Machine Learning internships.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a
+            href="#flagship"
+            class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-white shadow-[0_1px_2px_rgba(108,99,255,0.4)] hover:bg-accent-hover transition-all duration-200 ease-out"
+          >
+            See the flagship project <span aria-hidden="true">→</span>
+          </a>
+          <a
+            href="mailto:tydobson41@gmail.com"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+          >
+            Email Tyler
+          </a>
+          <a
+            href="https://www.linkedin.com/in/tylerdobson"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+          >
+            LinkedIn <span aria-hidden="true">↗</span>
+          </a>
+          <a
+            href="https://github.com/tylerdobson"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4 py-2.5 text-sm text-text hover:text-accent hover:border-accent transition-all duration-200 ease-out"
+          >
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:justify-self-end w-full max-w-xl lg:max-w-none">
+        <ArchitectureDiagram variant="hero" />
+      </div>
+    </div>
+  </div>
+</section>

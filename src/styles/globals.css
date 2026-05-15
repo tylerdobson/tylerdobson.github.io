@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces */
+  --color-bg: #0a0a0f;
+  --color-bg-elev: #12121a;
+  --color-bg-elev-2: #1a1a24;
+  --color-border: #1e1e2e;
+  --color-border-strong: #2a2a3e;
+
+  /* Text */
+  --color-text: #e2e2e8;
+  --color-text-dim: #9999a8;
+  --color-text-muted: #55556b;
+
+  /* Accent */
+  --color-accent: #6c63ff;
+  --color-accent-hover: #8b83ff;
+  --color-accent-dim: #6c63ff1a;
+
+  /* Semantic */
+  --color-success: #4ecdc4;
+  --color-warning: #ffd93d;
+  --color-danger: #ff6b6b;
+
+  /* Type */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", monospace;
+
+  /* Sizing */
+  --container-content: 72rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-accent-dim);
+  color: var(--color-text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Hairline grid divider used between sections */
+.hairline-divider {
+  border-top: 1px solid var(--color-border);
+}
+
+/* Architecture diagram animations */
+@keyframes diagramFade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes diagramDraw {
+  from {
+    stroke-dashoffset: var(--dash-len, 400);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.diagram-node {
+  opacity: 0;
+  animation: diagramFade 0.5s ease-out forwards;
+}
+
+.diagram-edge {
+  stroke-dasharray: var(--dash-len, 400);
+  stroke-dashoffset: var(--dash-len, 400);
+  animation: diagramDraw 1.5s ease-out 0.6s forwards;
+}
+
+.diagram-edge.delay-1 {
+  animation-delay: 0.8s;
+}
+
+.diagram-edge.delay-2 {
+  animation-delay: 1s;
+}
+
+.diagram-edge.delay-3 {
+  animation-delay: 1.2s;
+}
+
+.diagram-node:hover ~ .diagram-edge,
+.diagram-node-group:hover .diagram-edge-related {
+  stroke: var(--color-accent);
+  transition: stroke 0.2s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diagram-node,
+  .diagram-edge {
+    animation: none;
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
