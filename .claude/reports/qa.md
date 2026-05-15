@@ -92,6 +92,11 @@ The avatar resolver fell back to `public/avatar.svg`, and `/resume/` rendered th
 - Added `Avatar.astro` for shared avatar fallback logic.
 - Added two-agent docs in `.claude/agents/builder.md` and `.claude/agents/qa-auditor.md`.
 
-## Deployment Follow-Up
+## Live Deployment
 
-After push to `main`, verify the live GitHub Pages deployment at `https://tylerdobson.github.io/` and `https://tylerdobson.github.io/resume/` to confirm GitHub Actions has published the current Astro source.
+Commit `fac4700` was pushed to `main`; GitHub Actions run `25900564079` completed successfully.
+
+Live checks passed with a cache-busted request:
+
+- `https://tylerdobson.github.io/?v=fac4700` returned 200 and included `Workflow systems`, `Claude Code`, and `SEC EDGAR`.
+- `https://tylerdobson.github.io/resume/?v=fac4700` returned 200 and included the PDF object preview plus native resume content.
