@@ -45,32 +45,3 @@ npm run preview    # serves the built site locally
 └── tsconfig.json
 ```
 
-## Deployment to GitHub Pages
-
-This repo serves the live site at `https://tylerdobson.github.io/` (user-pages).
-
-The GitHub Actions workflow (`.github/workflows/deploy.yml`) builds on push to `main` and deploys via `actions/deploy-pages@v4`. Make sure **Settings → Pages → Source** is set to **GitHub Actions** (not branch).
-
-## First-time push (replacing the existing site)
-
-If this is replacing existing content in the GitHub repo:
-
-```powershell
-# In the existing local clone of tylerdobson.github.io (back up first if you want)
-git checkout main
-git rm -rf .
-# Copy every file from this folder into the cloned repo root
-# Then:
-git add .
-git commit -m "Rebuild portfolio: Astro + Tailwind v4 + AI Engineer positioning"
-git push origin main
-```
-
-Old commits remain in history regardless — the new build is just the latest commit.
-
-## What still needs Tyler
-
-- `public/resume.pdf` — replace the placeholder with the real résumé
-- `public/assets/projects/retail-kpi/hero.png` — drop in
-- `public/assets/projects/spotify-analytics/hero.png` — drop in
-- `public/og-image.png` — convert `og-image.svg` to PNG (1200×630) for LinkedIn / X cards. Any SVG-to-PNG tool works; CloudConvert or `npx svg-to-img` both fine.
